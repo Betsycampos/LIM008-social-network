@@ -1,0 +1,20 @@
+header, footer {
+    background-color: #9BD02A;
+    color: white;
+}
+
+input {
+    background-color: rgba(80, 203, 220, 0.54);
+    border-radius: 6px;
+}
+
+.center-items {
+    align-items: center;
+    text-align: center;
+}
+
+.btn-registrar {
+    background-color: #FBBC05;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
