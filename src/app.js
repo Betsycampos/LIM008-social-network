@@ -18,3 +18,10 @@ btnSubmit.addEventListener('click', () => {
         });
     }else alert('Contraseña y confirmar contraseña deben coincidir');
 });
+const btnFb = document.getElementById('fb');
+btnFb.addEventListener('click', () => {
+    FB.getLoginStatus(function(response) {
+        console.log("esto es el obj resultado: " + statusChangeCallback(response));
+         
+    });
+});

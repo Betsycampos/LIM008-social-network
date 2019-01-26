@@ -19,6 +19,28 @@
     };
     firebase.initializeApp(config);
   </script>
+  <!-- app facebook -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{375641126501749}',
+      cookie     : true,
+      xfbml      : true,
+      // version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 </head>
 <body class="center-items">
   <header>
@@ -35,7 +57,7 @@
     <input id="btn-submit" type="button" value="Regístrate" class="btn-registrar">
     <div>
         <label>O ingresa a través de:</label>
-        <img alt="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
+        <img id="fb" alt="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
         <img alt="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
     </div>
   </div>
