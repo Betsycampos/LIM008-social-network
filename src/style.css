@@ -18,3 +18,17 @@ input {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
 }
+
+.ico-fb, .ico-google {
+    width: 30px;
+    height: 30px;
+}
+
+.warning {
+    color: red;
+}
+
+.img-tree {
+    width: 200px;
+    height: 200px;
+}
