@@ -20,10 +20,10 @@ btnSubmit.addEventListener('click', () => {
 });
 const btnFb = document.getElementById('fb');
 btnFb.addEventListener('click', () => {
-    // FB.getLoginStatus(function(response) {
-    //     console.log("esto es el obj resultado: " + statusChangeCallback(response));
+    FB.getLoginStatus(function(response) {
+        console.log("esto es el obj resultado: " + statusChangeCallback(response));
          
-    // });
+    });
     alert('hola');
     const provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
