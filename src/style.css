@@ -1,3 +1,16 @@
+@font-face {
+    font-family: bioFont;
+    src: url(fonts/bioFont.otf);
+}
+
+body {
+    background: #fff;
+    color: rgba(0, 0, 0, 0.87);
+    font-family: bioFont;
+    margin: 0;
+    padding: 80px;
+}
+
 header, footer {
     background-color: #9BD02A;
     color: white;
@@ -18,3 +31,39 @@ input {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
 }
+
+.ico-fb, .ico-google {
+    width: 25px;
+    height: 25px;
+}
+
+.warning {
+    color: red;
+}
+
+.img-tree {
+    width: 200px;
+    height: 200px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+header {
+    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+	left: 0; /* Posicionamos la cabecera al lado izquierdo */
+	top: 0; /* Posicionamos la cabecera pegada arriba */
+    position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;	
+    z-index: 100;
+    padding: 0 15px;
+}
+
+
