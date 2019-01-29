@@ -7,28 +7,6 @@
   <title>SocialBio</title>
   <link rel="icon" type="image/png" href="https://banner2.kisspng.com/20180306/ehe/kisspng-globe-world-animation-cartoon-blue-earth-5a9e9e96e39748.2747067115203447269322.jpg" />
   <link rel="stylesheet" href="style.css">
-  <!-- app facebook -->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{375641126501749}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{v3.2}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
 </head>
 <body class="center-items">
   <header>
@@ -48,9 +26,9 @@
       </div>
       <button id="btn-submit" type="button" class="btn-registrar">Regístrate</button>
       <div>
-          <label>O ingresa a través de:</label>
-          <img id="fb" alt="ico-fb" class="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
-          <img id="auth-google" alt="ico-google" class="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
+        <label>O ingresa a través de:</label>
+        <img id="auth-fb" alt="ico-fb" class="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
+        <img id="auth-google" alt="ico-google" class="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
       </div>
       <p id="message"></p>
     </div>
@@ -59,9 +37,9 @@
   <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
-  <script src="config.js"></script>
+  <script type="module" src="config.js"></script>
   <script type="module" src="lib/index.js"></script>
-  <!-- <script type="module" src="app.js"></script> -->
+  <script type="module" src="app.js"></script>
   <script type="module" src="main.js"></script>
 </body>
 </html>
