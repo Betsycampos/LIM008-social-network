@@ -1,11 +1,5 @@
 // aqui exportaras las funciones que necesites
 
-// Función para validar email correctos
-export const emailValidation = (email) => {
-  if (email.indexOf('@')===-1 || email.indexOf('.')===-1) return false;
-    else if (email.indexOf('@') && email.indexOf('.')) return true;
-};
-
 export const createUser = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .catch((error) => {
@@ -16,3 +10,13 @@ export const createUser = (email, password) => {
       console.log(errorMessage);
     });
 };
+//Función para validar email correctos
+  export const emailValidation = (email) =>{
+    if (email.indexOf('@')===-1 || email.indexOf('.')===-1) return false;
+    else return true;
+  };
+
+  export const passwordValidation = (password) =>{
+    if (password.length >=6) return true;
+    else return false;
+  };
