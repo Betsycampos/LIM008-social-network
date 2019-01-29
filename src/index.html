@@ -6,22 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NameApp</title>
   <link rel="stylesheet" href="style.css">
- 
-<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  const config = {
-    apiKey: "AIzaSyCrRlTuGI-KAzq1mzZ84cV68rReO1dp1e4",
-    authDomain: "redsocial-8c128.firebaseapp.com",
-    databaseURL: "https://redsocial-8c128.firebaseio.com",
-    projectId: "redsocial-8c128",
-    storageBucket: "redsocial-8c128.appspot.com",
-    messagingSenderId: "614216668686"
-  };
-  firebase.initializeApp(config);
-</script>
+  <!-- <script>
+    // Initialize Firebase
+    
+
+  </script> -->
   <!-- app facebook -->
-<script>
+<!-- <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '{375641126501749}',
@@ -44,29 +35,36 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-</script>
+</script> -->
 </head>
 <body class="center-items">
   <header>
     <h1>NameApp</h1>
   </header>
-  <div>
-    <h2>REGÍSTRATE</h2>
-    <img alt="image-tree" src="https://i.ibb.co/F0vckNw/img-tree.png" />
-    <div> 
-      <input id="email" type="text" placeholder="Correo">
-      <input id="password" type="password" placeholder="Contraseña">
-      <input id="re-password" type="password" placeholder="Confirmar Contraseña">
-    </div>
-    <input id="btn-submit" type="button" value="Regístrate" class="btn-registrar">
+  <form id="frm-login">
     <div>
-        <label>O ingresa a través de:</label>
-        <img id="fb" alt="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
-        <img alt="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
+      <h2>REGÍSTRATE</h2>
+      <img alt="image-tree" src="https://i.ibb.co/F0vckNw/img-tree.png" class="img-tree"/>
+      <div> 
+        <input id="email" type="text" placeholder="Correo">
+        <p id="warning-em" class="warning"></p>
+        <input id="password" type="password" placeholder="Contraseña">
+        <p id="warning-pw" class="warning"></p>
+        <input id="conf-password" type="password" placeholder="Confirmar Contraseña">
+        <p id="warning-cf" class="warning"></p>
+      </div>
+      <button id="btn-submit" type="button" class="btn-registrar">Regístrate</button>
+      <div>
+          <label>O ingresa a través de:</label>
+          <img id="fb" alt="ico-fb" class="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
+          <img alt="ico-google" class="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
+      </div>
     </div>
-  </div>
+  </form>
   <footer>Copyright</footer>
-  <!-- <script type="module" src="main.js"></script> -->
-  <script src="app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script type="module" src="lib/index.js"></script>
+  <!-- <script type="module" src="app.js"></script> -->
+  <script type="module" src="main.js"></script>
 </body>
 </html>
