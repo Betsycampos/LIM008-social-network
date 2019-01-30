@@ -1,33 +1,23 @@
-const config = {
-  apiKey: "AIzaSyCrRlTuGI-KAzq1mzZ84cV68rReO1dp1e4",
-  authDomain: "redsocial-8c128.firebaseapp.com",
-  databaseURL: "https://redsocial-8c128.firebaseio.com",
-  projectId: "redsocial-8c128",
-  storageBucket: "redsocial-8c128.appspot.com",
-  messagingSenderId: "614216668686"
+import { objTemp } from './tempString.js'
+import { configFirebase } from './config.js';
+import { emailValidation } from './lib/index.js';
+import { createUser, authenticationGoogle, authenticationFb } from './app.js';
+
+const viewTmp = (routers) => {
+  const router = routers.substr(2, routers.length -2);
+  const container = document.getElementById('container');
+  container.innerHTML = objTemp[router];
 };
-firebase.initializeApp(config);
 
-import { emailValidation, createUser } from './lib/index.js';
-// import { createUser } from 'app.js';
+configFirebase();
 
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
-const confPassword = document.getElementById('conf-password').value;
-
-const warningEmail = document.getElementById('warning-em');
-const warningPassword = document.getElementById('warning-pw');
-const warningConfirmP = document.getElementById('warning-cf');
-
-//Se debe importar la función de firebase
-//Antes de que se hagan las funciones debe haber la validación de
-
-const btnSubmit = document.getElementById('btn-submit');
-
-btnSubmit.addEventListener('click', () => {
+const registerWithEmailAndPassword = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const confPassword = document.getElementById('conf-password').value;
+  const warningEmail = document.getElementById('warning-em');
+  const warningPassword = document.getElementById('warning-pw');
+  const warningConfirmP = document.getElementById('warning-cf');
   if (email === '' && password === '' && confPassword === ''){
     warningEmail.innerHTML = 'Completa el correo.';
     warningPassword.innerHTML = 'Completa la contraseña.';
@@ -42,13 +32,55 @@ btnSubmit.addEventListener('click', () => {
     warningConfirmP.innerHTML = '';
     createUser(email, password);
     alert('Usuario registrado');
-    document.getElementById('frm-login').reset();
+    document.getElementById('frm-register').reset();
   };
-});
+};
+
+// Pintando templates
+const newForm = (id, hash, selectFunction) => {
+  const formElem = document.createElement('form');
+  formElem.setAttribute('id', id);
+  formElem.innerHTML = hash;
+  formElem.addEventListener('submit', selectFunction);
+};
+
+const changeTmp = (hash) => {
+  if (hash === '#/' || hash === '' || hash ==='#'){
+    return viewTmp('#/home');
+  } else if (hash === '#/register'){
+    viewTmp(hash);
+    const formElem = document.createElement('form');
+    formElem.setAttribute('id', 'frm-register');
+    formElem.innerHTML = objTemp.register;
+    console.log(formElem);
+    const btnSubmit = document.getElementsByTagName('button')[0];
+    console.log(btnSubmit);
+    btnSubmit.addEventListener('click', registerWithEmailAndPassword());
+  }
+};
+
+// || hash === "#/wall" || hash === "#/login"
+
+window.addEventListener('load', changeTmp(window.location.hash));
+if (('onchange' in window)) window.onhashchange = () => changeTmp(window.location.hash);
 
 
-// Este es el punto de entrada de tu aplicacion
 
-// import { myFunction } from './lib/index.js';
 
-// myFunction();
+// const btnSubmit = document.getElementById('btn-submit');
+// btnSubmit.addEventListener('click', () => {
+  
+// });
+
+// Autentificación con Google
+// const authGoogle = document.getElementById('auth-google');
+// authGoogle.addEventListener('click', () => {
+//   authenticationGoogle();
+// });
+
+// // Autentificación con Facebook
+// const authFb = document.getElementById('auth-fb');
+// authFb.addEventListener('click', () => {
+//   authenticationFb();
+// });
+

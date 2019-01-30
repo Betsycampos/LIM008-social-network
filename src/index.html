@@ -4,67 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>NameApp</title>
+  <title>SocialBio</title>
+  <link rel="icon" type="image/png" href="https://banner2.kisspng.com/20180306/ehe/kisspng-globe-world-animation-cartoon-blue-earth-5a9e9e96e39748.2747067115203447269322.jpg" />
   <link rel="stylesheet" href="style.css">
-  <!-- <script>
-    // Initialize Firebase
-    
-
-  </script> -->
-  <!-- app facebook -->
-<!-- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{375641126501749}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{v3.2}'
-    });
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });      
-    FB.AppEvents.logPageView();   
-    // console.log("esto  es error de inicio: "+FB.logout());
-    // console.log("esto  es login:  "+FB.login());
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script> -->
 </head>
 <body class="center-items">
   <header>
-    <h1>NameApp</h1>
+    <h1>SocialBio</h1>
   </header>
-  <form id="frm-login">
-    <div>
-      <h2>REGÍSTRATE</h2>
-      <img alt="image-tree" src="https://i.ibb.co/F0vckNw/img-tree.png" class="img-tree"/>
-      <div> 
-        <input id="email" type="text" placeholder="Correo">
-        <p id="warning-em" class="warning"></p>
-        <input id="password" type="password" placeholder="Contraseña">
-        <p id="warning-pw" class="warning"></p>
-        <input id="conf-password" type="password" placeholder="Confirmar Contraseña">
-        <p id="warning-cf" class="warning"></p>
-      </div>
-      <button id="btn-submit" type="button" class="btn-registrar">Regístrate</button>
-      <div>
-          <label>O ingresa a través de:</label>
-          <img id="fb" alt="ico-fb" class="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
-          <img alt="ico-google" class="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
-      </div>
-    </div>
-  </form>
+  <section id="container">
+
+  </section>
   <footer>Copyright</footer>
+  <script type="module" src="tempString.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+  <script type="module" src="config.js"></script>
   <script type="module" src="lib/index.js"></script>
-  <!-- <script type="module" src="app.js"></script> -->
+  <script type="module" src="app.js"></script>
   <script type="module" src="main.js"></script>
 </body>
 </html>
