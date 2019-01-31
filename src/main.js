@@ -6,12 +6,12 @@ import { createUser, authenticationGoogle, authenticationFb } from './app.js';
 const viewTmp = (routers) => {
   const router = routers.substr(2, routers.length -2);
   const container = document.getElementById('container');
-  container.innerHTML = objTemp[router];
-};
+  // container.appendChild(objTemp[router]);
+  console.log(container);
+  console.log(objTemp[router]);
+}
 
-configFirebase();
-
-const registerWithEmailAndPassword = () => {
+export const registerWithEmailAndPassword = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const confPassword = document.getElementById('conf-password').value;
@@ -47,15 +47,20 @@ const newForm = (id, hash, selectFunction) => {
 const changeTmp = (hash) => {
   if (hash === '#/' || hash === '' || hash ==='#'){
     return viewTmp('#/home');
-  } else if (hash === '#/register'){
+    // const btnRegister = document.getElementsByTagName('button')[0];
+    // const btnEnter = document.getElementsByTagName('button')[1];
+    // console.log(btnRegister.addEventListener('click', viewTmp('#/register')));
+    // console.log(btnEnter.addEventListener('click', viewTmp('#/login')));
+  } 
+  else if (hash === '#/register'){
     viewTmp(hash);
-    const formElem = document.createElement('form');
-    formElem.setAttribute('id', 'frm-register');
-    formElem.innerHTML = objTemp.register;
-    console.log(formElem);
-    const btnSubmit = document.getElementsByTagName('button')[0];
-    console.log(btnSubmit);
-    btnSubmit.addEventListener('click', registerWithEmailAndPassword());
+  //   const formElem = document.createElement('form');
+  //   formElem.setAttribute('id', 'frm-register');
+  //   formElem.innerHTML = objTemp.register;
+  //   console.log(formElem);
+  //   const btnSubmit = document.getElementsByTagName('button')[0];
+  //   console.log(btnSubmit);
+  //   btnSubmit.addEventListener('click', registerWithEmailAndPassword());
   }
 };
 
