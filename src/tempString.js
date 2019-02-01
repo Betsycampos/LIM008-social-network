@@ -1,11 +1,11 @@
-import { addFormElem }from './UI/register.js';
+// import { addFormElem }from './UI/register.js';
   export const objTemp = {
     // home: `
     // <div>
     //   <button id="btn-register" href="#/register">Regístrate</button>
     //   <button id="btn-enter" href="#/login">Ingresa</button>
     // </div>`,
-    register: addFormElem(),
+    // register: addFormElem(),
     // login: `
     //   <div>
     //     <h2>INICIA SESIÓN</h2>
