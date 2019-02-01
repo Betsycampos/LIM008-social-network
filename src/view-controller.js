@@ -1,5 +1,7 @@
-import { createUser } from './app.js';
+import { createUser } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
+
+
 
 export const registerWithEmailAndPassword = () => {
     const email = document.getElementById('email').value;
@@ -20,7 +22,9 @@ export const registerWithEmailAndPassword = () => {
       warningEmail.innerHTML = '';
       warningPassword.innerHTML = '';
       warningConfirmP.innerHTML = '';
-      createUser(email, password);
+      createUser(email, password)
+      // .then(() => changeHash('#/wall'))
+      // .catch(() => {});
       alert('Usuario registrado');
       document.getElementById('frm-register').reset();
     };
