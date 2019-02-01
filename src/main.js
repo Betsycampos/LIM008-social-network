@@ -1,75 +1,22 @@
-import { objTemp } from './tempString.js'
 import { configFirebase } from './config.js';
-import { emailValidation } from './lib/index.js';
-import { createUser, authenticationGoogle, authenticationFb } from './app.js';
+import { signInWithFacebook, signOut } from './app.js';
+import { initRouter } from './router.js';
 
 
 configFirebase();
-
-const viewTmp = (routers) => {
-  const router = routers.substr(2, routers.length -2);
-  const container = document.getElementById('container');
-  const elem = objTemp[router];
-  console.log(elem);
-  container.appendChild(elem);
-}
-
-export const registerWithEmailAndPassword = () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const confPassword = document.getElementById('conf-password').value;
-  const warningEmail = document.getElementById('warning-em');
-  const warningPassword = document.getElementById('warning-pw');
-  const warningConfirmP = document.getElementById('warning-cf');
-  if (email === '' && password === '' && confPassword === ''){
-    warningEmail.innerHTML = 'Completa el correo.';
-    warningPassword.innerHTML = 'Completa la contraseña.';
-    warningConfirmP.innerHTML = 'Confirma la contraseña ingresada.';
-  } else if(password !== confPassword){
-    warningConfirmP.innerHTML = 'La contraseña ingresada debe coincidir con este campo.';
-  } else if (!emailValidation(email)){
-    warningEmail.innerHTML = 'El correo debe contener @ y .';
-  } else {
-    warningEmail.innerHTML = '';
-    warningPassword.innerHTML = '';
-    warningConfirmP.innerHTML = '';
-    createUser(email, password);
-    alert('Usuario registrado');
-    document.getElementById('frm-register').reset();
-  };
-};
-
-
-const changeTmp = (hash) => {
-  if (hash === '#/' || hash === '' || hash ==='#'){
-    return viewTmp('#/home');
-  } 
-  else if (hash === '#/register'){
-    viewTmp(hash);
-  }
-};
-
-// || hash === "#/wall" || hash === "#/login"
-
-window.addEventListener('load', changeTmp(window.location.hash));
-if (('onchange' in window)) window.onhashchange = () => changeTmp(window.location.hash);
+initRouter();
 
 
 
-// const btnSubmit = document.getElementById('btn-submit');
-// btnSubmit.addEventListener('click', () => {
-  
-// });
+// Probando que funcione ingresar con Facebook redireccionando a otro lado
+const btnSignInFb = document.getElementById('sign-in-fb');
+btnSignInFb.addEventListener('click', () => {
+  signInWithFacebook();
+  // authenticationFb();
+});
 
-// Autentificación con Google
-// const authGoogle = document.getElementById('auth-google');
-// authGoogle.addEventListener('click', () => {
-//   authenticationGoogle();
-// });
-
-// // Autentificación con Facebook
-// const authFb = document.getElementById('auth-fb');
-// authFb.addEventListener('click', () => {
-//   authenticationFb();
-// });
-
+// Cerrando sesión
+const btnSignOut = document.getElementById('sign-out');
+btnSignOut.addEventListener('click', () => {
+  signOut();
+});
