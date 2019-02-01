@@ -3,12 +3,15 @@ import { configFirebase } from './config.js';
 import { emailValidation } from './lib/index.js';
 import { createUser, authenticationGoogle, authenticationFb } from './app.js';
 
+
+configFirebase();
+
 const viewTmp = (routers) => {
   const router = routers.substr(2, routers.length -2);
   const container = document.getElementById('container');
-  // container.appendChild(objTemp[router]);
-  console.log(container);
-  console.log(objTemp[router]);
+  const elem = objTemp[router];
+  console.log(elem);
+  container.appendChild(elem);
 }
 
 export const registerWithEmailAndPassword = () => {
@@ -36,31 +39,13 @@ export const registerWithEmailAndPassword = () => {
   };
 };
 
-// Pintando templates
-const newForm = (id, hash, selectFunction) => {
-  const formElem = document.createElement('form');
-  formElem.setAttribute('id', id);
-  formElem.innerHTML = hash;
-  formElem.addEventListener('submit', selectFunction);
-};
 
 const changeTmp = (hash) => {
   if (hash === '#/' || hash === '' || hash ==='#'){
     return viewTmp('#/home');
-    // const btnRegister = document.getElementsByTagName('button')[0];
-    // const btnEnter = document.getElementsByTagName('button')[1];
-    // console.log(btnRegister.addEventListener('click', viewTmp('#/register')));
-    // console.log(btnEnter.addEventListener('click', viewTmp('#/login')));
   } 
   else if (hash === '#/register'){
     viewTmp(hash);
-  //   const formElem = document.createElement('form');
-  //   formElem.setAttribute('id', 'frm-register');
-  //   formElem.innerHTML = objTemp.register;
-  //   console.log(formElem);
-  //   const btnSubmit = document.getElementsByTagName('button')[0];
-  //   console.log(btnSubmit);
-  //   btnSubmit.addEventListener('click', registerWithEmailAndPassword());
   }
 };
 
@@ -68,7 +53,6 @@ const changeTmp = (hash) => {
 
 window.addEventListener('load', changeTmp(window.location.hash));
 if (('onchange' in window)) window.onhashchange = () => changeTmp(window.location.hash);
-
 
 
 
