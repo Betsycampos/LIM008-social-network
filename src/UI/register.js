@@ -1,5 +1,5 @@
 import { registerWithEmailAndPassword } from '../view-controller.js';
-import { authenticationGoogle, authenticationFacebook } from '../app.js';
+import { authenticationGoogle, authenticationFacebook } from '../firebase-controller.js';
 
 export default () => {
   const formElem = document.createElement('form');
