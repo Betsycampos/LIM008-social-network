@@ -20,7 +20,7 @@ export const authenticationGoogle = () => {
     })
 };
 
-export const authenticationFb = () => {
+export const authenticationFacebook = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
@@ -36,3 +36,28 @@ export const authenticationFb = () => {
       console.log(error);
     });
 };
+
+export const signInWithFacebook = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithRedirect(provider);
+  firebase.auth().getRedirectResult()
+    .then((result) => {
+      const token = result.credential.accessToken;
+      const user = result.user;
+      console.log(user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.email;
+      const credential = error.credential;
+      console.log(error);
+    });
+}
+
+export const signOut = () => {
+  firebase.auth().signOut().then(() => {
+    alert('Se ha cerrado correctamente');
+  })
+  .catch(err => console.log('Error logout', err))
+}
