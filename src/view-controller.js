@@ -1,7 +1,9 @@
-import { createUser } from './firebase-controller.js';
+import { createUser, signIn } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
-
+const changeHash = (hash) =>  {
+  location.hash = hash;
+};
 
 export const registerWithEmailAndPassword = () => {
     const email = document.getElementById('email').value;
@@ -23,14 +25,27 @@ export const registerWithEmailAndPassword = () => {
       warningPassword.innerHTML = '';
       warningConfirmP.innerHTML = '';
       createUser(email, password)
-      // .then(() => changeHash('#/wall'))
-      // .catch(() => {});
+      .then(() => changeHash('#/wall'))
+      .catch(() => {});
       alert('Usuario registrado');
       document.getElementById('frm-register').reset();
     };
 };
 
 // Esta es la función para que el usuario ingrese a la página con correo y contraseña
-export const loginUserWithEmailAndPassword = () => {
-
+export const signInUser = () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const warningEmail = document.getElementById('warning-em');
+  const warningPassword = document.getElementById('warning-pw');
+  if (email === '' || password === ''){
+    warningEmail.innerHTML = 'Completa el correo.';
+    warningPassword.innerHTML = 'Completa la contraseña.';
+  } else {
+  signIn(email, password)
+    .then(() => changeHash('#/wall'))
+    .catch(() => {});
+  alert('Iniciaste sesión con éxito');
+  document.getElementById('frm-login').reset();
+  }
 }
