@@ -21,7 +21,6 @@ export default () => {
     </div>`;
   formElem.setAttribute('id', 'frm-login');
   formElem.innerHTML = formContent;
-
   const btnLogin = formElem.querySelector('#btn-login');
   btnLogin.addEventListener('click', loginUserWithEmailAndPassword);
   const authFacebook = formElem.querySelector('#auth-fb'); 

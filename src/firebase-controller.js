@@ -58,11 +58,47 @@ export const signInWithFacebook = () => {
       const credential = error.credential;
       console.log(error);
     });
-}
+};
 
 export const signOut = () => {
   firebase.auth().signOut().then(() => {
     alert('Se ha cerrado correctamente');
   })
   .catch(err => console.log('Error logout', err))
-}
+};
+// export const addNote = (textNewNote) =>
+//   firebase.firestore().collection('notes').add({
+//     title: textNewNote,
+//     state: false
+//   })
+const userData = () => {
+  const user = firebase.auth().currentUser;
+  if (user != null) return user.email;
+  else alert('para colgar un post debe iniciar sesión');
+};
+
+export const addPublish = (textNewPublish, security) =>{
+  const email = userData();
+  firebase.firestore().collection(security).add({
+    email: email,
+    post: textNewPublish,
+    countLikes: 0
+  })
+  .then((docRef) =>{
+    alert('Su post se agrego con éxito ', docRef.id);
+  } )
+  .catch((error) =>{
+    alert('Su post no puede ser publicado, Este es un gran error: ', error);
+  } )
+};
+
+export const getPublish = (callback) =>
+  firebase.firestore().collection('friends')
+    .onSnapshot((querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        console.log('esto es email: '+doc.data().email);
+        data.push({ id: doc.id, ...doc.data() })
+      });
+      callback(data);
+    }); 
