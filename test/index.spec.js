@@ -1,8 +1,6 @@
 // importamos la funcion que vamos a testear
 import { emailValidation } from "../src/lib/index";
 
-// require('../src/lib/index.js');
-
 import { passwordValidation} from "../src/lib/index";
 const emailTrue = 'format_email_true@email.com';
 const emailFalse = 'format_email_true_email_com';
