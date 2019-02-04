@@ -1,5 +1,4 @@
 import { signInUser } from '../view-controller.js'
-
 import { authenticationGoogle, authenticationFacebook } from '../firebase-controller.js';
 
 export default () => {
@@ -22,7 +21,6 @@ export default () => {
     </div>`;
   formElem.setAttribute('id', 'frm-login');
   formElem.innerHTML = formContent;
-
   const btnLogin = formElem.querySelector('#btn-login');
   btnLogin.addEventListener('click', signInUser);
   const authFacebook = formElem.querySelector('#auth-fb'); 

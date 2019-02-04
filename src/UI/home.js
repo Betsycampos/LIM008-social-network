@@ -1,5 +1,4 @@
-import { viewTemplate, initRouter } from '../router.js'
-
+import {changeTemplate, initRouter} from '../router.js'
 export default () => {
   const formElem = document.createElement('form');
   const formContent = `
@@ -12,15 +11,12 @@ export default () => {
   
   const btnFormRegister = formElem.querySelector('#btn-frm-register');
   btnFormRegister.addEventListener('click', () => {
-    viewTemplate('#/register');
-    btnFormRegister.setAttribute('src', '#/register');
-    console.log(btnFormRegister);
-    // btnFormRegister.src = '#/register';
-  });
+    console.log(changeTemplate(window.location['#/register']));
+   });
 
   const btnFormLogin = formElem.querySelector('#btn-frm-login');
-  btnFormLogin.addEventListener('click', () => {
-    btnFormLogin.setAttribute('href', '#/login');
+   btnFormLogin.addEventListener('click', () => {
+    changeTemplate(location['#/login']);
   });
   return formElem;
 };

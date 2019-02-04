@@ -31,6 +31,30 @@ export const registerWithEmailAndPassword = () => {
       document.getElementById('frm-register').reset();
     };
 };
+export const addPublishOnSubmit = (event) => {
+  event.preventDefault();
+  // const txtPost = document.getElementById('txt-post').value;
+  const security = document.getElementById('select-security').value;
+  const input = document.getElementById('txt-post');
+  const snackbarContainer = document.getElementById('demo-snackbar');
+  // data que muestra el snackbar
+  const data = {
+    message: '',
+    timeout: 2000,
+    actionText: 'Undo'
+  };
+  addPublish(input.value, security)
+  .then(() => {
+    input.value = '';
+    data.message = 'Publicación agregada'
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  }).catch(() => {
+    input.value = '';
+    data.message = 'Lo sentimos, no se pudo agregar la publicación';
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  });
+};
+export const deletePublishOnClick = () =>{};
 
 // Esta es la función para que el usuario ingrese a la página con correo y contraseña
 export const signInUser = () => {
