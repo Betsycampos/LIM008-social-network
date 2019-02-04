@@ -3,9 +3,9 @@ import { viewTemplate, initRouter } from '../router.js'
 export default () => {
   const formElem = document.createElement('form');
   const formContent = `
-    <div>
-      <button id="btn-frm-register">Regístrate</button>
-      <button id="btn-frm-login">Ingresa</button>
+    <div class="home">
+      <button id="btn-frm-register" class="btns-home font-bio">Regístrate</button>
+      <button id="btn-frm-login" class="btns-home font-bio">Ingresa</button>
     </div>`;
   formElem.setAttribute('id', 'frm-home');
   formElem.innerHTML = formContent;

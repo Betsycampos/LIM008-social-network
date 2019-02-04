@@ -8,7 +8,8 @@ export default () => {
       <option value="friends">Amigos</option>
     </select>
     <button id="btn-publish">Publicar</button>
-  </div>`;
+  </div>
+  `;
   formElem.setAttribute('id', 'frm-wall');
   formElem.innerHTML = formContent;
   return formElem;
