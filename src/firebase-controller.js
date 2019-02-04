@@ -13,6 +13,16 @@ export const createUser = (email, password) => {
     });
 };
 
+export const signIn = (email, password) => {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then(() => changeHash('#/wall'))
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
+};
 export const authenticationGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
