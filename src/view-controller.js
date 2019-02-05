@@ -1,4 +1,4 @@
-import { createUser, signIn } from './firebase-controller.js';
+import { createUser, signIn, editPublish } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 
@@ -45,8 +45,7 @@ export const signInUser = () => {
   }
 };
 
-
-// Esta es la función para que el usuario ingrese a la página con correo y contraseña
-// export const loginUserWithEmailAndPassword = () => {
-  
-// }
+export const editPublishOnClick = () => {
+  editPublish('804k6CB50Iv5HzmdLRMO', 'Cambiando este texto')
+};
+document.getElementById('editar').addEventListener('click', editPublishOnClick);
