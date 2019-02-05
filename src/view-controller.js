@@ -80,6 +80,3 @@ export const deletePublishOnClick = (objPost) => {
     deletePublish(objPost.id)
   }
 };
-  
-
-
