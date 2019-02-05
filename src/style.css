@@ -107,6 +107,11 @@ header {
     padding: 15px;
 }
 
+.link-delete {
+    color: red;
+    text-decoration: underline;
+}
+
 /* 
 .btn-fb {
     background-image: url('https://i.ibb.co/NmxyWjL/ico-fb.png');
