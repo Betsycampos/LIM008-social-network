@@ -4,16 +4,7 @@ export const createUser = (email, password) =>
 export const signIn = (email, password) => 
   firebase.auth().signInWithEmailAndPassword(email, password)
 
-export const signIn = (email, password) => {
-  firebase.auth().signInWithEmailAndPassword(email, password)
-  .then(() => changeHash('#/wall'))
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
-};
+
 export const authenticationGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
@@ -61,45 +52,40 @@ export const signInWithFacebook = () => {
     });
 };
 
+const userData = () => {
+  const user = firebase.auth().currentUser;
+  if (user != null) return user.email;
+  else alert('para colgar un post debe iniciar sesión');
+};
+
 export const addPublish = (textNewPublish, security) =>{
   const email = userData();
-  firebase.firestore().collection(security).add({
+  firebase.firestore().collection('posts').add({
     email: email,
     post: textNewPublish,
-    countLikes: 0
+    countLikes: 0,
+    security: security
   })
   .then((docRef) =>{
     alert('Su post se agrego con éxito ', docRef.id);
   } )
   .catch((error) =>{
     alert('Su post no puede ser publicado, Este es un gran error: ', error);
-  } )
+  })
 };
 
 export const getPublish = (callback) =>
-  firebase.firestore().collection('friends')
+  firebase.firestore().collection('posts')
     .onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
-        console.log('esto es email: '+doc.data().email);
         data.push({ id: doc.id, ...doc.data() })
       });
       callback(data);
     }); 
 
-// export const getPosts = (callback, nameCollection) =>
-//   firebase.firestore().collection(nameCollection)
-//     .onSnapshot((querySnapshot) => {
-//       const data = [];
-//       querySnapshot.forEach((doc) => {
-//         data.push({ id: doc.id, ...doc.data() })
-//       });
-//       callback(data);
-//     });
-
-export const deletePost = (nameCollection, idPost) => 
-  firebase.firestore().collection(nameCollection).doc(idPost).delete()  
-
+export const deletePublish = (idPost) => 
+  firebase.firestore().collection('posts').doc(idPost).delete()  
 
 export const signOut = () => {
   firebase.auth().signOut().then(() => {
@@ -108,11 +94,7 @@ export const signOut = () => {
   .catch(err => console.log('Error logout', err))
 };
 
-const userData = () => {
-  const user = firebase.auth().currentUser;
-  if (user != null) return user.email;
-  else alert('para colgar un post debe iniciar sesión');
-};
+
 
 
 
