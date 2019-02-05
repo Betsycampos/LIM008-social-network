@@ -1,7 +1,9 @@
 import { createUser, signIn, editPublish } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
-
+const changeHash = (hash) =>  {
+  location.hash = hash;
+};
 
 export const registerWithEmailAndPassword = () => {
     const email = document.getElementById('email').value;
@@ -23,13 +25,38 @@ export const registerWithEmailAndPassword = () => {
       warningPassword.innerHTML = '';
       warningConfirmP.innerHTML = '';
       createUser(email, password)
-      // .then(() => changeHash('#/wall'))
-      // .catch(() => {});
+      .then(() => changeHash('#/wall'))
+      .catch(() => {});
       alert('Usuario registrado');
       document.getElementById('frm-register').reset();
     };
 };
+export const addPublishOnSubmit = (event) => {
+  event.preventDefault();
+  // const txtPost = document.getElementById('txt-post').value;
+  const security = document.getElementById('select-security').value;
+  const input = document.getElementById('txt-post');
+  const snackbarContainer = document.getElementById('demo-snackbar');
+  // data que muestra el snackbar
+  const data = {
+    message: '',
+    timeout: 2000,
+    actionText: 'Undo'
+  };
+  addPublish(input.value, security)
+  .then(() => {
+    input.value = '';
+    data.message = 'Publicación agregada'
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  }).catch(() => {
+    input.value = '';
+    data.message = 'Lo sentimos, no se pudo agregar la publicación';
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  });
+};
+export const deletePublishOnClick = () =>{};
 
+// Esta es la función para que el usuario ingrese a la página con correo y contraseña
 export const signInUser = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
@@ -39,7 +66,9 @@ export const signInUser = () => {
     warningEmail.innerHTML = 'Completa el correo.';
     warningPassword.innerHTML = 'Completa la contraseña.';
   } else {
-  signIn(email, password);
+  signIn(email, password)
+    .then(() => changeHash('#/wall'))
+    .catch(() => {});
   alert('Iniciaste sesión con éxito');
   document.getElementById('frm-login').reset();
   }
