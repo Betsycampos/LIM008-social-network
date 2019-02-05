@@ -5,8 +5,10 @@ export const configFirebase = () => {
     databaseURL: "https://redsocial-8c128.firebaseio.com",
     projectId: "redsocial-8c128",
     storageBucket: "redsocial-8c128.appspot.com",
-    messagingSenderId: "614216668686"
+    // messagingSenderId: "614216668686"
   };
    
   firebase.initializeApp(config);
+  // const database = ;
+  // console.log(firebase.database());
 }

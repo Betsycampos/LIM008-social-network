@@ -8,16 +8,18 @@ export default () => {
     <h2>REGÍSTRATE</h2>
     <img alt="image-tree" src="https://i.ibb.co/F0vckNw/img-tree.png" class="img-tree"/>
     <div> 
-      <input id="email" type="text" placeholder="Correo">
+      <input id="email" type="text" placeholder="Correo" class="input-rg-li font-bio">
       <p id="warning-em" class="warning"></p>
-      <input id="password" type="password" placeholder="Contraseña">
+      <input id="password" type="password" placeholder="Contraseña" class="input-rg-li font-bio">
       <p id="warning-pw" class="warning"></p>
-      <input id="conf-password" type="password" placeholder="Confirmar Contraseña">
+      <input id="conf-password" type="password" placeholder="Confirmar Contraseña" class="input-rg-li font-bio">
       <p id="warning-cf" class="warning"></p>
     </div>
-    <button id="btn-register" type="button" class="btn-registrar">Regístrate</button>
+    <button id="btn-register" type="button" class="btn-registrar font-bio">Regístrate</button>
     <div>
-      <label>O ingresa a través de:</label>
+      <label class="font-bio">O ingresa a través de:</label>
+    </div>
+    <div>
       <img id="auth-fb" alt="ico-fb" class="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
       <img id="auth-google" alt="ico-google" class="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
     </div>
