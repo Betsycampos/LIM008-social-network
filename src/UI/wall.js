@@ -1,13 +1,12 @@
 import { addPublishOnSubmit, deletePublishOnClick } from "../view-controller.js";
 
 const itemPublish = (objPublish) => {
-  const liElement = document.createElement('li');
-  let tagPost = 'textarea';
-  liElement.innerHTML = `
+  const divElement = document.createElement('div');
+  divElement.innerHTML = `
     <div>
-      <span>${objPublish.email}</span>
+      <div class="title-post">${objPublish.email}</div>
       <div id="post-${objPublish.id}">
-        <span>${objPublish.post}</span>
+        <div class="container-post">${objPublish.post}</div>
       </div>
     </div>
     <div id="btn-${objPublish.id}">
@@ -17,20 +16,19 @@ const itemPublish = (objPublish) => {
       <button type="button" id="btn-edit-${objPublish.id}">Editar</button>
     </div>
     `;
-  console.log(`${objPublish.id}`);
-
-  liElement.querySelector(`#btn-edit-${objPublish.id}`)
+    divElement.querySelector(`#btn-edit-${objPublish.id}`)
     .addEventListener('click', () => {
-      liElement.querySelector(`#post-${objPublish.id}`).innerHTML = `
+      divElement.querySelector(`#post-${objPublish.id}`).innerHTML = `
       <textarea>${objPublish.post}</textarea>`;
-      liElement.querySelector(`#btn-${objPublish.id}`).innerHTML = `
+      divElement.querySelector(`#btn-${objPublish.id}`).innerHTML = `
       <button>Guardar</button>`;
     });
-
+  // Agregando css con fondo de la caja (divElement)
+  divElement.setAttribute('class', 'post-background');
   // Agregando evento de click al btn eliminar una publicación
-  liElement.querySelector(`#btn-delete-${objPublish.id}`)
+  divElement.querySelector(`#btn-delete-${objPublish.id}`)
     .addEventListener('click', () => deletePublishOnClick(objPublish));
-  return liElement;
+  return divElement;
 }
 
 export default (post) => {
@@ -46,8 +44,8 @@ export default (post) => {
   </div>
       <!-- Publishs -->
     <section>
-      <ul id="publish-list">
-      </ul>
+      <div id="publish-list">
+      </div>
     </section>
 
     <!-- snackbar -->
@@ -58,9 +56,9 @@ export default (post) => {
   formElem.setAttribute('id', 'frm-wall');
   formElem.innerHTML = formContent;
   const btnPublish = formElem.querySelector('#btn-publish');
-  const ul = formElem.querySelector('#publish-list');
+  const divContinerPost = formElem.querySelector('#publish-list');
   post.forEach(data => {
-    ul.appendChild(itemPublish(data));
+    divContinerPost.appendChild(itemPublish(data));
   });
   btnPublish.addEventListener('click', addPublishOnSubmit);
   return formElem;

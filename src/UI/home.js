@@ -11,7 +11,7 @@ export default () => {
   
   const btnFormRegister = formElem.querySelector('#btn-frm-register');
   btnFormRegister.addEventListener('click', () => {
-    console.log(changeTemplate(window.location['#/register']));
+    changeTemplate(window.location['#/register']);
    });
 
   const btnFormLogin = formElem.querySelector('#btn-frm-login');

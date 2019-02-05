@@ -2,7 +2,9 @@
     font-family: bioFont;
     src: url(fonts/bioFont.otf);
 }
-
+* {
+font-family: bioFont;
+}
 body {
     background: #fff;
     color: rgba(0, 0, 0, 0.87);
@@ -51,6 +53,18 @@ h2 {
     margin: 20px;
 }
 
+.post-background {
+    background:#fff;
+    opacity: 0.8;
+    border-radius: 6px;
+    border-style: inset;
+    margin: 5%;
+}
+.title-post {
+    font-size: 12px;
+    text-align:left;
+    margin: 3%;
+}
 .ico-fb, .ico-google {
     width: 40px;
     height: 40px;
