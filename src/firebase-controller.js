@@ -4,7 +4,10 @@ export const createUser = (email, password) =>
 export const signIn = (email, password) => 
   firebase.auth().signInWithEmailAndPassword(email, password)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3dcbf43b303c0dda59327a2382591e6a56d6f01d
 export const authenticationGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
@@ -92,7 +95,12 @@ export const signOut = () => {
     alert('Se ha cerrado correctamente');
   })
   .catch(err => console.log('Error logout', err))
-};
+}
+
+export const editPublish = (idPost, textEditPost) =>
+firebase.firestore().collection("posts").doc(idPost).update({
+  post:  textEditPost
+});
 
 
 

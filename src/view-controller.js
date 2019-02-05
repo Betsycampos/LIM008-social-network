@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -80,3 +80,8 @@ export const deletePublishOnClick = (objPost) => {
     deletePublish(objPost.id)
   }
 };
+
+export const editPublishOnClick = () => {
+  editPublish('804k6CB50Iv5HzmdLRMO', 'Cambiando este texto')
+};
+document.getElementById('editar').addEventListener('click', editPublishOnClick);
