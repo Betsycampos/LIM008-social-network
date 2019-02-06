@@ -12,12 +12,8 @@ const itemPublish = (objPublish) => {
       </div>
     </div>
     <div id="btn">
-      <a id="btn-delete-${objPublish.id}" class="link-delete">
-        <i>Eliminar</i>
-      </a>
-      <button type="button" id="btn-edit">Editar</button>
+       <button type="button" id="btn-edit">Editar</button>
     <div id="btn-${objPublish.id}">
-      <button type="button" id="btn-edit-${objPublish.id}">Editar</button>
     </div>
   </div>
     `;
