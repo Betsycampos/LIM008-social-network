@@ -97,9 +97,3 @@ export const editPublish = (idPost, textEditPost) =>
 firebase.firestore().collection("posts").doc(idPost).update({
   post:  textEditPost
 });
-
-
-
-
-
-
