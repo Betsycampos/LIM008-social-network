@@ -4,18 +4,17 @@ const itemPublish = (objPublish) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = `
     <div>
+      <button id="btn-delete-${objPublish.id}" class="link-delete"></button>
       <div class="title-post">${objPublish.email}</div>
       <div id="post-${objPublish.id}">
         <div class="container-post">${objPublish.post}</div>
       </div>
     </div>
     <div id="btn-${objPublish.id}">
-      <a id="btn-delete-${objPublish.id}" class="link-delete">
-        <i>Eliminar</i>
-      </a>
       <button type="button" id="btn-edit-${objPublish.id}">Editar</button>
     </div>
     `;
+
     divElement.querySelector(`#btn-edit-${objPublish.id}`)
     .addEventListener('click', () => {
       divElement.querySelector(`#post-${objPublish.id}`).innerHTML = `
@@ -25,6 +24,7 @@ const itemPublish = (objPublish) => {
     });
   // Agregando css con fondo de la caja (divElement)
   divElement.setAttribute('class', 'post-background');
+
   // Agregando evento de click al btn eliminar una publicación
   divElement.querySelector(`#btn-delete-${objPublish.id}`)
     .addEventListener('click', () => deletePublishOnClick(objPublish));
