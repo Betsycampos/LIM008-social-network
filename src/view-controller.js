@@ -63,16 +63,8 @@ export const addPublishOnSubmit = (event) => {
     timeout: 2000,
     actionText: 'Undo'
   };
-  addPublish(input.value, security)
-  // .then(() => {
-  //   input.value = '';
-  //   data.message = 'Publicación agregada'
-  //   snackbarContainer.MaterialSnackbar.showSnackbar(data);
-  // }).catch(() => {
-  //   input.value = '';
-  //   data.message = 'Lo sentimos, no se pudo agregar la publicación';
-  //   snackbarContainer.MaterialSnackbar.showSnackbar(data);
-  // });
+  if(input.value!=='')addPublish(input.value, security)
+  else alert ('Debe ingresar texto en el post para publicar')
 };
 
 export const deletePublishOnClick = (objPost) => {
