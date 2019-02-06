@@ -57,7 +57,7 @@ export const userData = () => {
   else alert('para colgar un post debe iniciar sesión');
 };
 
-export const addPublish = (email, textNewPublish, security) => {
+export const addPublish = (email, textNewPublish, security) => 
   // const email = userData();
   firebase.firestore().collection('posts').add({
     email: email,
@@ -71,7 +71,7 @@ export const addPublish = (email, textNewPublish, security) => {
   // .catch((error) =>{
   //   alert('Su post no puede ser publicado, Este es un gran error: ', error);
   // })
-};
+
 
 export const getPublish = (callback) =>
   firebase.firestore().collection('posts')
