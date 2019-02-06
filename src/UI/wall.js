@@ -1,34 +1,45 @@
-import { addPublishOnSubmit, deletePublishOnClick } from "../view-controller.js";
+import { addPublishOnSubmit, deletePublishOnClick, editPublishOnClick } from "../view-controller.js";
 
 const itemPublish = (objPublish) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = `
+  <div id="post1-${objPublish.id}">
     <div>
       <div class="title-post">${objPublish.email}</div>
       <div id="post-${objPublish.id}">
         <div class="container-post">${objPublish.post}</div>
       </div>
     </div>
-    <div id="btn-${objPublish.id}">
+    <div id="btn">
       <a id="btn-delete-${objPublish.id}" class="link-delete">
         <i>Eliminar</i>
       </a>
-      <button type="button" id="btn-edit-${objPublish.id}">Editar</button>
+      <button type="button" id="btn-edit">Editar</button>
     </div>
+  </div>
     `;
-    divElement.querySelector(`#btn-edit-${objPublish.id}`)
+    divElement.querySelector('#btn-edit')
     .addEventListener('click', () => {
-      divElement.querySelector(`#post-${objPublish.id}`).innerHTML = `
-      <textarea>${objPublish.post}</textarea>`;
-      divElement.querySelector(`#btn-${objPublish.id}`).innerHTML = `
-      <button>Guardar</button>`;
+      divElement.querySelector(`#post1-${objPublish.id}`).innerHTML = `
+      <form  id ="frm-save">
+        <textarea id="text-edit">${objPublish.post}</textarea>;
+        <button id="btn-save-${objPublish.id}">Guardar</button>
+      </form>`
+     
+      const btnSave = document.getElementById(`btn-save-${objPublish.id}`);
+       btnSave.addEventListener('click', () => editPublishOnClick(objPublish));  
+       
     });
+    
+    
   // Agregando css con fondo de la caja (divElement)
   divElement.setAttribute('class', 'post-background');
   // Agregando evento de click al btn eliminar una publicación
   divElement.querySelector(`#btn-delete-${objPublish.id}`)
     .addEventListener('click', () => deletePublishOnClick(objPublish));
+  
   return divElement;
+    
 }
 
 export default (post) => {
@@ -63,3 +74,6 @@ export default (post) => {
   btnPublish.addEventListener('click', addPublishOnSubmit);
   return formElem;
 }
+
+
+
