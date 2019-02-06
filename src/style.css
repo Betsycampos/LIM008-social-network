@@ -2,9 +2,11 @@
     font-family: bioFont;
     src: url(fonts/bioFont.otf);
 }
+
 * {
-font-family: bioFont;
+    font-family: bioFont;
 }
+
 body {
     background: #fff;
     color: rgba(0, 0, 0, 0.87);
@@ -44,8 +46,6 @@ h2 {
 
 .btn-registrar {
     background-color: rgb(15, 89, 134);
-    /* background-color: rgb(21, 18, 207); */
-    /* background-color: #FBBC05; */
     color: white;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
@@ -57,18 +57,18 @@ h2 {
     background:#fff;
     opacity: 0.8;
     border-radius: 6px;
-    border-style: inset;
     margin: 5%;
 }
+
 .title-post {
     font-size: 12px;
     text-align:left;
     margin: 3%;
 }
+
 .ico-fb, .ico-google {
     width: 40px;
     height: 40px;
-    
 }
 
 .warning {
@@ -104,7 +104,6 @@ header {
 .container {
     background: rgba(155, 208, 42, 0.80);
     border-radius: 10px;
-    /* padding: 10px 10px; */
 }
 
 .home {
@@ -122,13 +121,27 @@ header {
 }
 
 .link-delete {
-    color: red;
-    text-decoration: underline;
+    background-image: url('https://image.flaticon.com/icons/png/512/221/221755.png');
+    background-size: cover;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    float: right;
 }
 
-/* 
-.btn-fb {
-    background-image: url('https://i.ibb.co/NmxyWjL/ico-fb.png');
-    width: 50px;
-    height: 50px;
-} */
+#txt-post {
+    margin: 5px;
+    min-width: 210px;
+    max-width: 210px;
+    min-height: 100px;
+    max-height: 100px;
+    border: 0px;
+    -webkit-border-radius: 8px;
+    -webkit-box-shadow: inset 0px 0px 10px #404040;
+    padding: 10px;
+    color: rgb(49, 61, 54);
+}
+#txt-post:focus {
+    outline-style: none;
+}

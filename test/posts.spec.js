@@ -21,9 +21,19 @@ const data = {
 
 global.firebase = new MockFirebase(data, { isNaiveSnapshotListenerEnabled: true });  
 
-import { deletePublish, getPublish } from '../src/firebase-controller.js';
+import { addPublish, deletePublish, getPublish } from '../src/firebase-controller.js';
 
 describe('Muro de posts', () => {
+  it('Debería poder agregar un post', (done) => {
+    return addPublish('betsy@hotmail.com','Siembra un árbol','friends')
+      .then(() => getPublish(
+        (data) => {
+          const result = data.find((post) => post.post === 'Siembra un árbol');
+          expect(result.post).toBe('Siembra un árbol');
+          done()
+        }
+      ))
+  });
   it('Debería poder eliminar un post', (done) => {
     return deletePublish('p001')
       .then(() => getPublish(
