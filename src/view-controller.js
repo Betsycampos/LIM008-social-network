@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -63,7 +63,16 @@ export const addPublishOnSubmit = (event) => {
     timeout: 2000,
     actionText: 'Undo'
   };
-  if(input.value!=='')addPublish(input.value, security)
+  if(input.value!==''){
+    const email = userData();
+    addPublish(email, input.value, security)
+    .then((docRef) =>{
+        alert('Su post se agrego con éxito ', docRef.id);
+      } )
+      .catch((error) =>{
+        alert('Su post no puede ser publicado, Este es un gran error: ', error);
+      })
+  }
   else alert ('Debe ingresar texto en el post para publicar')
 };
 
