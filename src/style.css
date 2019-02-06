@@ -140,7 +140,7 @@ header {
     -webkit-border-radius: 8px;
     -webkit-box-shadow: inset 0px 0px 10px #404040;
     padding: 10px;
-    color: white;
+    color: rgb(49, 61, 54);
 }
 #txt-post:focus {
     outline-style: none;
