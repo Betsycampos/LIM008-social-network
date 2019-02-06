@@ -51,26 +51,26 @@ export const signInWithFacebook = () => {
     });
 };
 
-const userData = () => {
+export const userData = () => {
   const user = firebase.auth().currentUser;
   if (user != null) return user.email;
   else alert('para colgar un post debe iniciar sesión');
 };
 
-export const addPublish = (textNewPublish, security) =>{
-  const email = userData();
+export const addPublish = (email, textNewPublish, security) => {
+  // const email = userData();
   firebase.firestore().collection('posts').add({
     email: email,
     post: textNewPublish,
     countLikes: 0,
     security: security
   })
-  .then((docRef) =>{
-    alert('Su post se agrego con éxito ', docRef.id);
-  } )
-  .catch((error) =>{
-    alert('Su post no puede ser publicado, Este es un gran error: ', error);
-  })
+  // .then((docRef) =>{
+  //   alert('Su post se agrego con éxito ', docRef.id);
+  // } )
+  // .catch((error) =>{
+  //   alert('Su post no puede ser publicado, Este es un gran error: ', error);
+  // })
 };
 
 export const getPublish = (callback) =>
