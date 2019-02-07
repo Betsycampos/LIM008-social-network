@@ -12,7 +12,7 @@ const itemPublish = (objPublish) => {
       </div>
     </div>
     <div id="btn">
-       <button type="button" id="btn-edit">Editar</button>
+       <button type="button" id="btn-edit" class="btn-wall">Editar</button>
     <div id="btn-${objPublish.id}">
     </div>
   </div>
@@ -22,7 +22,7 @@ const itemPublish = (objPublish) => {
       divElement.querySelector(`#post1-${objPublish.id}`).innerHTML = `
       <form  id ="frm-save">
         <textarea id="text-edit">${objPublish.post}</textarea>;
-        <button id="btn-save-${objPublish.id}">Guardar</button>
+        <button id="btn-save-${objPublish.id}" class="btn-wall">Guardar</button>
       </form>`
      
       const btnSave = document.getElementById(`btn-save-${objPublish.id}`);
@@ -45,13 +45,15 @@ const itemPublish = (objPublish) => {
 export default (post) => {
   const formElem = document.createElement('form');
   const formContent = `
-  <div>
-    <textarea id="txt-post" cols="30" rows="10" placeholder="¿Qué quieres publicar?"></textarea>
-    <select id="select-security">
-      <option value="only-me">Solo yo</option>
-      <option value="friends">Amigos</option>
-    </select>
-    <button id="btn-publish">Publicar</button>
+  <div id="container-add-post">
+    <textarea id="txt-post" cols="30" rows="10" placeholder="¿Qué idea ecológica quieres compartir hoy?"></textarea>
+    <div class="align-left">
+      <select id="select-security">
+        <option value="only-me">Solo yo</option>
+        <option value="friends">Amigos</option>
+      </select>
+      <button id="btn-publish">Publicar</button>
+    </div>
   </div>
       <!-- Publishs -->
     <section>
@@ -61,12 +63,12 @@ export default (post) => {
 
     <!-- snackbar -->
     <div id="demo-snackbar">
-      <div></div>
-      <button type="button"></button>
+
     </div>`;
   formElem.setAttribute('id', 'frm-wall');
   formElem.innerHTML = formContent;
   const btnPublish = formElem.querySelector('#btn-publish');
+  btnPublish.setAttribute('class', 'btn-wall');
   const divContinerPost = formElem.querySelector('#publish-list');
   post.forEach(data => {
     divContinerPost.appendChild(itemPublish(data));
