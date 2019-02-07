@@ -5,8 +5,13 @@
 
 * {
     font-family: bioFont;
+    padding: 0px;
+    margin: 0px;
 }
-
+#profile{
+    margin: auto;
+    width: 500px;
+}
 body {
     background: #fff;
     color: rgba(0, 0, 0, 0.87);
@@ -165,14 +170,14 @@ ul {
     background-color:#434343;
 }
 .nav li ul {
-    display: none;
+    /* display: none; */
     position: absolute;
     min-width: 140px;
 }
 .nav > li {
     float: left;
 }
-.nav li:hover > ul {
+.nav li a:hover > ul {
     display: block;
 }
 .nav li ul li{
