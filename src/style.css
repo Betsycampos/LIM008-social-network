@@ -156,6 +156,33 @@ header {
 #txt-post:focus {
     outline-style: none;
 }
+
+.btn-wall {
+    background-color: rgb(12, 95, 146);
+    color: #fff;
+    border-radius: 5px;
+ }
+ 
+ .btn-wall {
+    background-color:rgb(12, 95, 146);
+    border: none;
+    color: white;
+    padding: 5px 22px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px;
+    cursor: pointer;
+    box-shadow: unset 0px 0px 10px #404040;
+ }
+ 
+ .select-security {
+    background-color: #30421c;
+    color: #fff;
+    border-radius: 2px;
+ }
+
 ul {
     list-style: none;
 }
