@@ -45,28 +45,28 @@ const itemPublish = (objPublish) => {
 export default (post) => {
   const formElem = document.createElement('form');
   const formContent = `
-  <div class="center-items">
-    <textarea id="txt-post" cols="30" rows="10" placeholder="¿Qué quieres publicar?" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></textarea>
-    <select id="select-security" class="select-security">
-      <option value="only-me">Solo yo</option>
-      <option value="friends">Amigos</option>
-    </select>
-    <button id="btn-publish" class="btn-wall">Publicar</button>
+  <div class="container-add-post">
+    <textarea id="txt-post" cols="30" rows="10" placeholder="¿Qué quieres publicar?"></textarea>
+    <div class="align-left">
+      <select id="select-security" class="select-security">
+        <option value="only-me">Solo yo</option>
+        <option value="friends">Amigos</option>
+      </select>
+      <button id="btn-publish" class="btn-wall">Publicar</button>
+    </div>
   </div>
-      <!-- Publishs -->
-    <section>
-      <div id="publish-list">
-      </div>
-    </section>
-
-    <!-- snackbar -->
-    <div id="demo-snackbar">
-      <div></div>
-      <button type="button"></button>
-    </div>`;
+  <!-- Publishs -->
+  <section>
+    <div id="publish-list">
+    </div>
+  </section>
+  <!-- snakbar -->
+  <div id="demo-snackbar">
+  </div>`;
   formElem.setAttribute('id', 'frm-wall');
   formElem.innerHTML = formContent;
   const btnPublish = formElem.querySelector('#btn-publish');
+  btnPublish.setAttribute('class', 'btn-wall');
   const divContinerPost = formElem.querySelector('#publish-list');
   post.forEach(data => {
     divContinerPost.appendChild(itemPublish(data));
