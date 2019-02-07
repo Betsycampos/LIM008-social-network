@@ -142,6 +142,19 @@ header {
     padding: 10px;
     color: rgb(49, 61, 54);
 }
+
 #txt-post:focus {
     outline-style: none;
+}
+
+.btn-wall {
+    background-color: rgb(12, 95, 146);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.select-security {
+    background-color: #30421c;
+    color: #fff;
+    border-radius: 2px;
 }
