@@ -5,8 +5,13 @@
 
 * {
     font-family: bioFont;
+    padding: 0px;
+    margin: 0px;
 }
-
+#profile{
+    margin: auto;
+    width: 500px;
+}
 body {
     background: #fff;
     color: rgba(0, 0, 0, 0.87);
@@ -120,6 +125,7 @@ header {
     padding: 15px;
 }
 
+
 .link-delete {
     background-image: url('https://image.flaticon.com/icons/png/512/221/221755.png');
     background-size: cover;
@@ -130,6 +136,10 @@ header {
     float: right;
 }
 
+.align-left {
+    text-align: right;
+}
+
 #txt-post {
     margin: 5px;
     min-width: 210px;
@@ -137,11 +147,43 @@ header {
     min-height: 100px;
     max-height: 100px;
     border: 0px;
-    /* -webkit-border-radius: 8px;
-    -webkit-box-shadow: inset 0px 0px 10px #404040; */
+    border-radius: 8px;
+    box-shadow: inset 0px 0px 10px #404040;
     padding: 10px;
     color: rgb(49, 61, 54);
 }
+
 #txt-post:focus {
     outline-style: none;
+}
+ul {
+    list-style: none;
+}
+.nav li a {
+    background-color: #000000;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+.nav li a:hover {
+    background-color:#434343;
+}
+.nav li ul {
+    /* display: none; */
+    position: absolute;
+    min-width: 140px;
+}
+.nav > li {
+    float: left;
+}
+.nav li a:hover > ul {
+    display: block;
+}
+.nav li ul li{
+    position: relative;
+}
+.nav li ul li ul {
+    right: 140px;
+    top: 0px;
 }
