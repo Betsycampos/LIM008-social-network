@@ -21,7 +21,7 @@ const data = {
 
 global.firebase = new MockFirebase(data, { isNaiveSnapshotListenerEnabled: true });  
 
-import { addPublish, deletePublish, getPublish } from '../src/firebase-controller.js';
+import { addPublish, deletePublish, getPublish, editPublish } from '../src/firebase-controller.js';
 
 describe('Muro de posts', () => {
   it('Debería poder agregar un post', (done) => {
@@ -31,6 +31,16 @@ describe('Muro de posts', () => {
           const result = data.find((post) => post.post === 'Siembra un árbol');
           expect(result.post).toBe('Siembra un árbol');
           done()
+        }
+      ))
+  });
+  it('Debería poder editar un post', (done) => {
+    return editPublish('p001','Siembra un árbol')
+      .then(() => getPublish(
+        (data) => {
+          const result = data.find((post) => post.post === 'Siembra un árbol');
+          expect(result.post).toBe('Siembra un árbol');
+          done();
         }
       ))
   });

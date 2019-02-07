@@ -93,13 +93,10 @@ export const signOut = () => {
   .catch(err => console.log('Error logout', err))
 }
 
-export const editPublish = (idPost, textEditPost) => { 
-let washingtonRef = firebase.firestore().collection("posts").doc(idPost);
-return washingtonRef.update({
+export const editPublish = (idPost, textEditPost) => 
+  firebase.firestore().collection("posts").doc(idPost).update({
   post:  textEditPost
 });
-
-}
 
 
 

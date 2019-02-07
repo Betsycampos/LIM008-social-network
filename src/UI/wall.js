@@ -5,7 +5,7 @@ const itemPublish = (objPublish) => {
   divElement.innerHTML = `
   <div id="post1-${objPublish.id}">
     <div>
-      <button id="btn-delete-${objPublish.id}" class="link-delete"></button>
+      <button id="btn-delete-${objPublish.id}" class="link-delete" type="button"></button>
       <div class="title-post">${objPublish.email}</div>
       <div id="post-${objPublish.id}">
         <div class="container-post">${objPublish.post}</div>
@@ -22,7 +22,7 @@ const itemPublish = (objPublish) => {
       divElement.querySelector(`#post1-${objPublish.id}`).innerHTML = `
       <form  id ="frm-save">
         <textarea id="text-edit">${objPublish.post}</textarea>;
-        <button id="btn-save-${objPublish.id}">Guardar</button>
+        <button id="btn-save-${objPublish.id}" type="button">Guardar</button>
       </form>`
      
       const btnSave = document.getElementById(`btn-save-${objPublish.id}`);
@@ -51,7 +51,7 @@ export default (post) => {
       <option value="only-me">Solo yo</option>
       <option value="friends">Amigos</option>
     </select>
-    <button id="btn-publish">Publicar</button>
+    <button id="btn-publish" type="button">Publicar</button>
   </div>
       <!-- Publishs -->
     <section>

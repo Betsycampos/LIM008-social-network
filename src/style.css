@@ -137,8 +137,8 @@ header {
     min-height: 100px;
     max-height: 100px;
     border: 0px;
-    -webkit-border-radius: 8px;
-    -webkit-box-shadow: inset 0px 0px 10px #404040;
+    /* -webkit-border-radius: 8px;
+    -webkit-box-shadow: inset 0px 0px 10px #404040; */
     padding: 10px;
     color: rgb(49, 61, 54);
 }
