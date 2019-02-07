@@ -82,7 +82,10 @@ export const deletePublishOnClick = (objPost) => {
   }
 };
 
-export const editPublishOnClick = () => {
-  editPublish('804k6CB50Iv5HzmdLRMO', 'Cambiando este texto')
+export const editPublishOnClick = (objPost) => {
+  // event.preventDefault();
+  const textEditPost = document.getElementById(`text-edit`);
+  console.log("esto es objPost: "+ textEditPost.value);
+ editPublish(objPost.id, textEditPost.value);
+// .addEventListener('click', editPublishOnClick);
 };
-document.getElementById('editar').addEventListener('click', editPublishOnClick);
