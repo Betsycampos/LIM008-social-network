@@ -4,16 +4,28 @@ export const createUser = (email, password) =>
 export const signIn = (email, password) => 
   firebase.auth().signInWithEmailAndPassword(email, password)
 
+export const createProfile = (email, name) =>
+firebase.firestore().collection('user').add({
+  email: email,
+  name: name
+})
+
 export const authenticationGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
-      const user = result.user.displayName;
       console.log(result);
+      const user = result.user.displayName;
+      console.log(user);
+      const email = result.user.email;
+      console.log(email);
+      createProfile(email, user);
+      window.location.hash = '#/wall';
     })
     .catch((error) => {
       console.log(error);
-    })
+    });
+    
 };
 
 export const authenticationFacebook = () => {
@@ -21,8 +33,11 @@ export const authenticationFacebook = () => {
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
       const token = result.credential.accessToken;
-      const user = result.user;
-      console.log(user);
+      const user = result.user.displayName;
+      const email = result.user.email;
+      console.log(createProfile(email, user));
+      window.location.hash = '#/wall';
+      return token;
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -58,20 +73,12 @@ export const userData = () => {
 };
 
 export const addPublish = (email, textNewPublish, security) => 
-  // const email = userData();
   firebase.firestore().collection('posts').add({
     email: email,
     post: textNewPublish,
     countLikes: 0,
     security: security
   })
-  // .then((docRef) =>{
-  //   alert('Su post se agrego con éxito ', docRef.id);
-  // } )
-  // .catch((error) =>{
-  //   alert('Su post no puede ser publicado, Este es un gran error: ', error);
-  // })
-
 
 export const getPublish = (callback) =>
   firebase.firestore().collection('posts')
@@ -97,8 +104,3 @@ export const editPublish = (idPost, textEditPost) =>
   firebase.firestore().collection("posts").doc(idPost).update({
   post:  textEditPost
 });
-
-
-
-
-
