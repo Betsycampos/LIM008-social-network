@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile, authenticationGoogle } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -28,8 +28,9 @@ export const registerWithEmailAndPassword = () => {
     warningEmail.innerHTML = '';
     warningPassword.innerHTML = '';
     warningConfirmP.innerHTML = '';
-    createProfile(email, name);
+    
     createUser(email, password)
+    .then(() => createProfile(email, name))
     .then(() => changeHash('#/wall'))
     .catch(() => {});
     alert('Usuario registrado');
@@ -54,6 +55,11 @@ export const signInUser = () => {
   alert('Iniciaste sesión con éxito');
   document.getElementById('frm-login').reset();
   }
+}
+
+export const authGooogleOnClick = () => {
+  authenticationGoogle()
+    .then(() => changeHash('#/wall'))
 }
 
 export const addPublishOnSubmit = (event) => {

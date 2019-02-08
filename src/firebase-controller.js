@@ -4,23 +4,23 @@ export const createUser = (email, password) =>
 export const signIn = (email, password) => 
   firebase.auth().signInWithEmailAndPassword(email, password)
 
-export const createProfile = (email, name) =>
+export const createProfile = (email, name, photo = '') =>
 firebase.firestore().collection('user').add({
   email: email,
-  name: name
+  name: name,
+  photo: photo
 })
 
 export const authenticationGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider)
+  return firebase.auth().signInWithPopup(provider)
     .then((result) => {
       console.log(result);
       const user = result.user.displayName;
       console.log(user);
       const email = result.user.email;
       console.log(email);
-      createProfile(email, user);
-      window.location.hash = '#/wall';
+      createProfile(email, user, photo);
     })
     .catch((error) => {
       console.log(error);
