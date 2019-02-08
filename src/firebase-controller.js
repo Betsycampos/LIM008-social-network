@@ -14,9 +14,13 @@ export const authenticationGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
+      console.log(result);
       const user = result.user.displayName;
-      const email = result.user.displayEmail;
+      console.log(user);
+      const email = result.user.email;
+      console.log(email);
       createProfile(email, user);
+      window.location.hash = '#/wall';
     })
     .catch((error) => {
       console.log(error);
@@ -29,8 +33,11 @@ export const authenticationFacebook = () => {
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
       const token = result.credential.accessToken;
-      const user = result.user;
-      console.log(user);
+      const user = result.user.displayName;
+      const email = result.user.email;
+      console.log(createProfile(email, user));
+      window.location.hash = '#/wall';
+      return token;
     })
     .catch((error) => {
       const errorCode = error.code;

@@ -58,24 +58,16 @@ export const signInUser = () => {
 
 export const addPublishOnSubmit = (event) => {
   event.preventDefault();
-  // const txtPost = document.getElementById('txt-post').value;
   const security = document.getElementById('select-security').value;
   const input = document.getElementById('txt-post');
-  const snackbarContainer = document.getElementById('demo-snackbar');
-  // data que muestra el snackbar
-  const data = {
-    message: '',
-    timeout: 2000,
-    actionText: 'Undo'
-  };
   if(input.value!==''){
     const email = userData();
     addPublish(email, input.value, security)
     .then((docRef) =>{
-        alert('Su post se agrego con éxito ', docRef.id);
+        //alert('Su post se agrego con éxito ', docRef.id);
       } )
       .catch((error) =>{
-        alert('Su post no puede ser publicado, Este es un gran error: ', error);
+        alert('Su post no puede ser publicado: ', error);
       })
   }
   else alert ('Debe ingresar texto en el post para publicar')
