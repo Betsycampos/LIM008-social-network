@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish, userData } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -6,29 +6,34 @@ const changeHash = (hash) =>  {
 };
 
 export const registerWithEmailAndPassword = () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confPassword = document.getElementById('conf-password').value;
-    const warningEmail = document.getElementById('warning-em');
-    const warningPassword = document.getElementById('warning-pw');
-    const warningConfirmP = document.getElementById('warning-cf');
-    if (email === '' && password === '' && confPassword === ''){
-      warningEmail.innerHTML = 'Completa el correo.';
-      warningPassword.innerHTML = 'Completa la contraseña.';
-      warningConfirmP.innerHTML = 'Confirma la contraseña ingresada.';
-    } else if(password !== confPassword){
-      warningConfirmP.innerHTML = 'La contraseña ingresada debe coincidir con este campo.';
-    } else if (!emailValidation(email)){
-      warningEmail.innerHTML = 'El correo debe contener @ y .';
-    } else {
-      warningEmail.innerHTML = '';
-      warningPassword.innerHTML = '';
-      warningConfirmP.innerHTML = '';
-      createUser(email, password)
-      .then(() => changeHash('#/wall'))
-      .catch(() => {});
-      alert('Usuario registrado');
-      document.getElementById('frm-register').reset();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confPassword = document.getElementById('conf-password').value;
+  const warningName = document.getElementById('warning-na');
+  const warningEmail = document.getElementById('warning-em');
+  const warningPassword = document.getElementById('warning-pw');
+  const warningConfirmP = document.getElementById('warning-cf');
+  if (email === '' && password === '' && confPassword === '' && name === ''){
+    warningName.innerHTML = 'Completa el nombre.';
+    warningEmail.innerHTML = 'Completa el correo.';
+    warningPassword.innerHTML = 'Completa la contraseña.';
+    warningConfirmP.innerHTML = 'Confirma la contraseña ingresada.';
+  } else if(password !== confPassword){
+    warningConfirmP.innerHTML = 'La contraseña ingresada debe coincidir con este campo.';
+  } else if (!emailValidation(email)){
+    warningEmail.innerHTML = 'El correo debe contener @ y .';
+  } else {
+    warningName.innerHTML = '';
+    warningEmail.innerHTML = '';
+    warningPassword.innerHTML = '';
+    warningConfirmP.innerHTML = '';
+    createProfile(email, name);
+    createUser(email, password)
+    .then(() => changeHash('#/wall'))
+    .catch(() => {});
+    alert('Usuario registrado');
+    document.getElementById('frm-register').reset();
     };
 };
 
