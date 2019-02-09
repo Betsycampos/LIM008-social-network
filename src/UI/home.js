@@ -1,6 +1,4 @@
-import {changeTemplate, initRouter} from '../router.js'
 export default () => {
-
   const formElem = document.createElement('form');
   const formContent = `
   <div class="home">

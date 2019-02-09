@@ -1,4 +1,4 @@
-import { signInUser, authGooogleOnClick } from '../view-controller.js'
+import { signInUser, authGooogleOnClick, authWithFacebookOnClick } from '../view-controller.js'
 import { authenticationGoogle, authenticationFacebook } from '../firebase-controller.js';
 
 export default () => {
@@ -24,7 +24,7 @@ export default () => {
   const btnLogin = formElem.querySelector('#btn-login');
   btnLogin.addEventListener('click', signInUser);
   const authFacebook = formElem.querySelector('#auth-fb'); 
-  authFacebook.addEventListener('click', authFacebookOnClick); 
+  authFacebook.addEventListener('click', authWithFacebookOnClick); 
   const authGoogle = formElem.querySelector('#auth-google');
   authGoogle.addEventListener('click', authGooogleOnClick);
   return formElem;

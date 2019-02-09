@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile, authenticationGoogle } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile, authenticationGoogle, authenticationFacebook } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -49,13 +49,23 @@ export const signInUser = () => {
     warningEmail.innerHTML = 'Completa el correo.';
     warningPassword.innerHTML = 'Completa la contraseña.';
   } else {
-  signIn(email, password)
-    .then(() => changeHash('#/wall'))
-    .catch(() => {});
-  alert('Iniciaste sesión con éxito');
-  document.getElementById('frm-login').reset();
+    signIn(email, password)
+      .then(() => changeHash('#/wall'))
+      .catch(() => {});
+    alert('Iniciaste sesión con éxito');
+    document.getElementById('frm-login').reset();
   }
-}
+};
+
+export const authWithGoogleOnClick = () => {
+  authenticationGoogle()
+    .then(() => changeHash('#/wall'));
+};
+
+export const authWithFacebookOnClick = () => {
+  authenticationFacebook()
+    .then(() => changeHash('#/wall'));
+};
 
 export const authGooogleOnClick = () => {
   authenticationGoogle()
@@ -76,12 +86,12 @@ export const addPublishOnSubmit = (event) => {
         alert('Su post no puede ser publicado: ', error);
       })
   }
-  else alert ('Debe ingresar texto en el post para publicar')
+  else alert ('Debe ingresar texto en el post para publicar');
 };
 
 export const deletePublishOnClick = (objPost) => {
   if (confirm('¿Está seguro de eliminar este post?')){
-    deletePublish(objPost.id)
+    deletePublish(objPost.id);
   }
 };
 
@@ -89,6 +99,6 @@ export const editPublishOnClick = (objPost) => {
   // event.preventDefault();
   const textEditPost = document.getElementById(`text-edit`);
   console.log("esto es objPost: "+ textEditPost.value);
- editPublish(objPost.id, textEditPost.value);
+  editPublish(objPost.id, textEditPost.value);
 // .addEventListener('click', editPublishOnClick);
 };
