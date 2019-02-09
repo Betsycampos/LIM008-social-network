@@ -6,9 +6,6 @@ export const configFirebase = () => {
     projectId: "redsocial-8c128",
     storageBucket: "redsocial-8c128.appspot.com",
     // messagingSenderId: "614216668686"
-  };
-   
+  }; 
   firebase.initializeApp(config);
-  // const database = ;
-  // console.log(firebase.database());
-}
+};
