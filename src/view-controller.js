@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish, userData } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData, authenticationGoogle, authenticationFacebook } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -6,30 +6,30 @@ const changeHash = (hash) =>  {
 };
 
 export const registerWithEmailAndPassword = () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confPassword = document.getElementById('conf-password').value;
-    const warningEmail = document.getElementById('warning-em');
-    const warningPassword = document.getElementById('warning-pw');
-    const warningConfirmP = document.getElementById('warning-cf');
-    if (email === '' && password === '' && confPassword === ''){
-      warningEmail.innerHTML = 'Completa el correo.';
-      warningPassword.innerHTML = 'Completa la contraseña.';
-      warningConfirmP.innerHTML = 'Confirma la contraseña ingresada.';
-    } else if(password !== confPassword){
-      warningConfirmP.innerHTML = 'La contraseña ingresada debe coincidir con este campo.';
-    } else if (!emailValidation(email)){
-      warningEmail.innerHTML = 'El correo debe contener @ y .';
-    } else {
-      warningEmail.innerHTML = '';
-      warningPassword.innerHTML = '';
-      warningConfirmP.innerHTML = '';
-      createUser(email, password)
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confPassword = document.getElementById('conf-password').value;
+  const warningEmail = document.getElementById('warning-em');
+  const warningPassword = document.getElementById('warning-pw');
+  const warningConfirmP = document.getElementById('warning-cf');
+  if (email === '' && password === '' && confPassword === ''){
+    warningEmail.innerHTML = 'Completa el correo.';
+    warningPassword.innerHTML = 'Completa la contraseña.';
+    warningConfirmP.innerHTML = 'Confirma la contraseña ingresada.';
+  } else if(password !== confPassword){
+    warningConfirmP.innerHTML = 'La contraseña ingresada debe coincidir con este campo.';
+  } else if (!emailValidation(email)){
+    warningEmail.innerHTML = 'El correo debe contener @ y .';
+  } else {
+    warningEmail.innerHTML = '';
+    warningPassword.innerHTML = '';
+    warningConfirmP.innerHTML = '';
+    createUser(email, password)
       .then(() => changeHash('#/wall'))
       .catch(() => {});
-      alert('Usuario registrado');
-      document.getElementById('frm-register').reset();
-    };
+    alert('Usuario registrado');
+    document.getElementById('frm-register').reset();
+  };
 };
 
 
@@ -43,20 +43,29 @@ export const signInUser = () => {
     warningEmail.innerHTML = 'Completa el correo.';
     warningPassword.innerHTML = 'Completa la contraseña.';
   } else {
-  signIn(email, password)
-    .then(() => changeHash('#/wall'))
-    .catch(() => {});
-  alert('Iniciaste sesión con éxito');
-  document.getElementById('frm-login').reset();
+    signIn(email, password)
+      .then(() => changeHash('#/wall'))
+      .catch(() => {});
+    alert('Iniciaste sesión con éxito');
+    document.getElementById('frm-login').reset();
   }
-}
+};
+
+export const authWithGoogleOnClick = () => {
+  authenticationGoogle()
+    .then(() => changeHash('#/wall'));
+};
+
+export const authWithFacebookOnClick = () => {
+  authenticationFacebook()
+    .then(() => changeHash('#/wall'));
+};
 
 export const addPublishOnSubmit = (event) => {
   event.preventDefault();
   // const txtPost = document.getElementById('txt-post').value;
   const security = document.getElementById('select-security').value;
   const input = document.getElementById('txt-post');
-  const snackbarContainer = document.getElementById('demo-snackbar');
   // data que muestra el snackbar
   const data = {
     message: '',
@@ -66,19 +75,19 @@ export const addPublishOnSubmit = (event) => {
   if(input.value!==''){
     const email = userData();
     addPublish(email, input.value, security)
-    .then((docRef) =>{
+      .then((docRef) =>{
         alert('Su post se agrego con éxito ', docRef.id);
-      } )
+      })
       .catch((error) =>{
         alert('Su post no puede ser publicado, Este es un gran error: ', error);
-      })
+      });
   }
-  else alert ('Debe ingresar texto en el post para publicar')
+  else alert ('Debe ingresar texto en el post para publicar');
 };
 
 export const deletePublishOnClick = (objPost) => {
   if (confirm('¿Está seguro de eliminar este post?')){
-    deletePublish(objPost.id)
+    deletePublish(objPost.id);
   }
 };
 
@@ -86,6 +95,6 @@ export const editPublishOnClick = (objPost) => {
   // event.preventDefault();
   const textEditPost = document.getElementById(`text-edit`);
   console.log("esto es objPost: "+ textEditPost.value);
- editPublish(objPost.id, textEditPost.value);
+  editPublish(objPost.id, textEditPost.value);
 // .addEventListener('click', editPublishOnClick);
 };
