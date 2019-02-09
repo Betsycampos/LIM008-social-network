@@ -1,5 +1,4 @@
-import { registerWithEmailAndPassword } from '../view-controller.js';
-import { authenticationGoogle, authenticationFacebook } from '../firebase-controller.js';
+import { registerWithEmailAndPassword, authWithGoogleOnClick, authWithFacebookOnClick } from '../view-controller.js';
 
 export default () => {
   const formElem = document.createElement('form');
@@ -30,8 +29,8 @@ export default () => {
   const btnRegister = formElem.querySelector('#btn-register');
   btnRegister.addEventListener('click', registerWithEmailAndPassword);
   const authFacebook = formElem.querySelector('#auth-fb'); 
-  authFacebook.addEventListener('click', authenticationFacebook); 
+  authFacebook.addEventListener('click', authWithFacebookOnClick); 
   const authGoogle = formElem.querySelector('#auth-google');
-  authGoogle.addEventListener('click', authenticationGoogle);
+  authGoogle.addEventListener('click', authWithGoogleOnClick);
   return formElem;
 };
