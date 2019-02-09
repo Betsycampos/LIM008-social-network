@@ -3,9 +3,13 @@ export default () => {
 
   const formElem = document.createElement('form');
   const formContent = `
-    <div class="home">
+  <div class="home">
+    <div>
       <button id="btn-frm-register" class="btns-home font-bio" type="button">Regístrate</button>
+      </div>
+      <div>
       <button id="btn-frm-login" class="btns-home font-bio" type="button">Ingresa</button>
+    </div>
     </div>`;
   formElem.setAttribute('id', 'frm-home');
   formElem.innerHTML = formContent;

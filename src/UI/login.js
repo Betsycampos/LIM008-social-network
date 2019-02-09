@@ -24,7 +24,7 @@ export default () => {
   const btnLogin = formElem.querySelector('#btn-login');
   btnLogin.addEventListener('click', signInUser);
   const authFacebook = formElem.querySelector('#auth-fb'); 
-  authFacebook.addEventListener('click', authenticationFacebook); 
+  authFacebook.addEventListener('click', authFacebookOnClick); 
   const authGoogle = formElem.querySelector('#auth-google');
   authGoogle.addEventListener('click', authGooogleOnClick);
   return formElem;
