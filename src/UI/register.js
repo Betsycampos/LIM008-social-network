@@ -7,6 +7,8 @@ export default () => {
     <h2>REGÍSTRATE</h2>
     <img alt="image-tree" src="https://i.ibb.co/F0vckNw/img-tree.png" class="img-tree"/>
     <div> 
+      <input id="name" type="text" placeholder="Nombre" class="input-rg-li font-bio">
+      <p id="warning-na" class="warning"></p>
       <input id="email" type="text" placeholder="Correo" class="input-rg-li font-bio">
       <p id="warning-em" class="warning"></p>
       <input id="password" type="password" placeholder="Contraseña" class="input-rg-li font-bio">

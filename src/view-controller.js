@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish, userData, authenticationGoogle, authenticationFacebook } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile, authenticationGoogle, authenticationFacebook } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -6,13 +6,16 @@ const changeHash = (hash) =>  {
 };
 
 export const registerWithEmailAndPassword = () => {
+  const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const confPassword = document.getElementById('conf-password').value;
+  const warningName = document.getElementById('warning-na');
   const warningEmail = document.getElementById('warning-em');
   const warningPassword = document.getElementById('warning-pw');
   const warningConfirmP = document.getElementById('warning-cf');
-  if (email === '' && password === '' && confPassword === ''){
+  if (email === '' && password === '' && confPassword === '' && name === ''){
+    warningName.innerHTML = 'Completa el nombre.';
     warningEmail.innerHTML = 'Completa el correo.';
     warningPassword.innerHTML = 'Completa la contraseña.';
     warningConfirmP.innerHTML = 'Confirma la contraseña ingresada.';
@@ -21,15 +24,18 @@ export const registerWithEmailAndPassword = () => {
   } else if (!emailValidation(email)){
     warningEmail.innerHTML = 'El correo debe contener @ y .';
   } else {
+    warningName.innerHTML = '';
     warningEmail.innerHTML = '';
     warningPassword.innerHTML = '';
     warningConfirmP.innerHTML = '';
+    
     createUser(email, password)
-      .then(() => changeHash('#/wall'))
-      .catch(() => {});
+    .then(() => createProfile(email, name))
+    .then(() => changeHash('#/wall'))
+    .catch(() => {});
     alert('Usuario registrado');
     document.getElementById('frm-register').reset();
-  };
+    };
 };
 
 
@@ -61,26 +67,24 @@ export const authWithFacebookOnClick = () => {
     .then(() => changeHash('#/wall'));
 };
 
+export const authGooogleOnClick = () => {
+  authenticationGoogle()
+    .then(() => changeHash('#/wall'))
+}
+
 export const addPublishOnSubmit = (event) => {
   event.preventDefault();
-  // const txtPost = document.getElementById('txt-post').value;
   const security = document.getElementById('select-security').value;
   const input = document.getElementById('txt-post');
-  // data que muestra el snackbar
-  const data = {
-    message: '',
-    timeout: 2000,
-    actionText: 'Undo'
-  };
   if(input.value!==''){
     const email = userData();
     addPublish(email, input.value, security)
-      .then((docRef) =>{
-        alert('Su post se agrego con éxito ', docRef.id);
-      })
+    .then((docRef) =>{
+        //alert('Su post se agrego con éxito ', docRef.id);
+      } )
       .catch((error) =>{
-        alert('Su post no puede ser publicado, Este es un gran error: ', error);
-      });
+        alert('Su post no puede ser publicado: ', error);
+      })
   }
   else alert ('Debe ingresar texto en el post para publicar');
 };
