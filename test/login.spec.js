@@ -10,13 +10,38 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockfirestore
 );
 
-import { signIn } from '../src/firebase-controller.js';
+import { signIn, userData, authenticationGoogle, authenticationFacebook, signOut } from '../src/firebase-controller.js';
 
-describe('Autenticación con correo y contraseña', () => {
-  it('Debería poder iniciar sesión', () => {
+describe('Inicio de sesión', () => {
+  it('Debería poder iniciar sesión con email y contraseña', () => {
     return signIn('test-register@gmail.com', '1234567')
       .then((user) => {
-        expect(user.email).toBe('test-register@gmail.com')
+        expect(userData()).toBe('test-register@gmail.com')
       });
   });
+  it('Debería poder iniciar sesión con Google', () => {
+    return authenticationGoogle()
+      .then((result) => {
+        // const emailU = result.user.email;
+        // expect(userData()).toBe(emailU)
+        // console.log(result);
+      });
+  });
+  it('Debería poder iniciar sesión con Facebook', () => {
+    return authenticationFacebook()
+      // .then((result) => {
+      //   // const emailU = result.user.email;
+      //   // expect(userData()).toBe(emailU)
+      //   console.log(result);
+      // });
+  });
+});
+
+describe('Cerrar sesión', () => {
+  it('Debería cerrar sesión devolviendo undefined', () => {
+    return signOut()
+    .then(() => {
+      expect(userData()).toBe(undefined)
+    })
+  })
 });
