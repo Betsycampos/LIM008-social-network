@@ -11,7 +11,7 @@ export default () => {
     </div>`;
   formElem.setAttribute('id', 'frm-home');
   formElem.innerHTML = formContent;
-  
+  document.getElementById('profile').innerHTML = '';
   const btnFormRegister = formElem.querySelector('#btn-frm-register');
   btnFormRegister.addEventListener('click', () => {
    window.location.hash = '#/register';

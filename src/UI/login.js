@@ -13,14 +13,23 @@ export default () => {
         <p id="warning-pw" class="warning"></p>
       </div>
       <button id="btn-login" type="button" class="btn-registrar">Ingresa</button>
+      <div>Si no tiene una cuenta <a id = "link-register" class = "link-btn">REGISTRATE AQUÍ</a></div>
       <div>
         <label>O ingresa a través de:</label>
-        <img id="auth-fb" alt="ico-fb" class="ico-fb" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
-        <img id="auth-google" alt="ico-google" class="ico-google" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
+        <div>
+          <img id="auth-fb" alt="ico-fb" class="ico-fb link-btn" src="https://i.ibb.co/NmxyWjL/ico-fb.png" />
+          <img id="auth-google" alt="ico-google" class="ico-google link-btn" src="https://i.ibb.co/xgLXQrr/ico-gg.png" />
+        </div>
       </div>
     </div>`;
   formElem.setAttribute('id', 'frm-login');
   formElem.innerHTML = formContent;
+  document.getElementById('profile').innerHTML = '';
+  document.getElementById('advertising').innerHTML = '';
+  const linkRegister = formElem.querySelector('#link-register');
+  linkRegister.addEventListener('click',  () => {
+    window.location.hash = '#/register';
+  });
   const btnLogin = formElem.querySelector('#btn-login');
   btnLogin.addEventListener('click', signInUser);
   const authFacebook = formElem.querySelector('#auth-fb'); 
