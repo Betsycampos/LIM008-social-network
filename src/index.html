@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SocialBio</title>
   <link rel="icon" type="image/png" href="https://i.ibb.co/5KvqfBb/icono-planeta-corazon.png" />
@@ -10,32 +10,21 @@
   <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
 </head>
 <body class="center-items font-bio">
-  <header>
+  <header class= "col-12">
     <h1>SocialBio</h1>
-    <span id="profile">
-      <ul class="nav">
-        <li><a class ="menu" href=""><img class="img" src="./img/menu-interface-symbol-of-four-horizontal-lines-with-dots.png" alt=""></a>
-					<ul>
-            <li><a href="">Publicaciones</a>
-              <ul>
-                <li><a href="">Solo yo</a></li>
-                <li><a href="">Amigos</a></li>
-                <li><a href="">Público</a></li>
-              </ul>
-            </li>
-						<li><a href="">Cerrar sesión</a></li>
-					</ul>
-				</li>
-				
-			</ul>
-      </ul>
-    </span>
+    <div id="profile"></div>
   </header>
-  
-  <section id="container" class="container">
+  <aside id="left-menu" class= "col-4">
     
-  </section>
-  <footer>Copyright</footer>
+    <img alt="image-tree" src="https://i.ibb.co/F0vckNw/img-tree.png" class="img-tree"/>
+    <p>
+      <cite>Por un planeta verde y con los recursos que realmente importan... los naturales</cite>
+    </p>
+    <hr>
+    <div id="advertising"></div>
+  </aside>
+  <section id="container" class= "col-8">contenido</section>
+  <footer class= "col-12">&copy; CopyLeft 2019 - Betsy, Claudia y Heidy</footer>
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-firestore.js"></script>

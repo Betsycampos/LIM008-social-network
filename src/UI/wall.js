@@ -1,4 +1,4 @@
-import { addPublishOnSubmit, deletePublishOnClick, editPublishOnClick } from "../view-controller.js";
+import { addPublishOnSubmit, deletePublishOnClick, editPublishOnClick, logoutOnClick } from "../view-controller.js";
 import { increaseLikes } from "../firebase-controller.js";
 
 const itemPublish = (objPublish) => {
@@ -52,7 +52,7 @@ export default (post) => {
   const formContent = `
   <div class="container-add-post">
     <textarea id="txt-post" cols="30" rows="10" placeholder="¿Qué quieres publicar?"></textarea>
-    <div class="align-left">
+    <div id= "container-textarea" class="align-left">
       <select id="select-security" class="select-security">
         <option value="only-me">Solo yo</option>
         <option value="friends">Amigos</option>
@@ -68,8 +68,43 @@ export default (post) => {
   <!-- snakbar -->
   <div id="demo-snackbar">
   </div>`;
+  const divContent = `
+    <ul class="nav">
+    <li>
+      <a class ="menu"><img class="img" src="./img/menu-interface-symbol-of-four-horizontal-lines-with-dots.png" alt=""></a>
+      <ul>
+        <li><a>Publicaciones</a>
+        <ul>
+            <li><a id="btn-only-me">Solo yo</a></li>
+            <li><a id="btn-friends">Amigos</a></li>
+            <li><a id="btn-publish">Público</a></li>
+        </ul>
+        </li>
+        <li><a id="btn-logout">Cerrar sesión</a></li>
+      </ul>
+     </li>
+    </ul>`;
+    const advertising=`
+    <div>
+			<h1>Publicidad 1</h1>
+			<p>Texto descriptivo 1</p>
+  	</div>
+  	<div>
+			<h1>Publicidad 2</h1>
+			<p>Texto descriptivo 2</p>
+    </div>
+    <div>
+    <h1>Publicidad 3</h1>
+    <p>Texto descriptivo 3</p>
+  </div>`;
   formElem.setAttribute('id', 'frm-wall');
   formElem.innerHTML = formContent;
+  const divProfile = document.getElementById('profile');
+  divProfile.innerHTML = divContent;
+  const leftMenu = document.getElementById('advertising');
+  leftMenu.innerHTML = advertising;
+  const btnLogout = divProfile.querySelector('#btn-logout');
+  btnLogout.addEventListener('click', (() =>{logoutOnClick()}));
   const btnPublish = formElem.querySelector('#btn-publish');
   btnPublish.setAttribute('class', 'btn-wall');
   const divContinerPost = formElem.querySelector('#publish-list');
@@ -78,7 +113,4 @@ export default (post) => {
   });
   btnPublish.addEventListener('click', addPublishOnSubmit);
   return formElem;
-}
-
-
-
+};
