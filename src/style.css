@@ -239,3 +239,20 @@ img{
     width: 20px;
     height: 20px;
 }
+
+/* Cantidad de likes */
+.div-likes {
+    text-align: right;
+    padding: 10px;
+}
+
+.btn-like, .p-likes {
+    display: inline-block;
+}
+
+.btn-like {
+    background-image: url('https://i.ibb.co/KrNJdj6/like-Green.png');
+    background-size: cover;
+    width: 22px;
+    height: 18px;
+}
