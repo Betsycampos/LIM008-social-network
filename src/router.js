@@ -10,9 +10,9 @@ export  const viewTemplate = (routers) => {
   // console.log(security);
   container.innerHTML = '';
   switch (router) {
-    case 'home':
-      container.appendChild(home());
-      break;
+    // case 'home':
+    //   container.appendChild(login());
+    //   break;
     case 'register': 
       container.appendChild(register());
       break;
@@ -21,7 +21,7 @@ export  const viewTemplate = (routers) => {
       break;
     case 'wall': 
     getPublish((post) => {
-      container.innerHTML = '';        
+      container.innerHTML = '';
       container.appendChild(wall(post));
     })
     break;
@@ -30,7 +30,7 @@ export  const viewTemplate = (routers) => {
 
 export const changeTemplate = (hash) => {
   if(hash === '#/register' || hash === '#/login' || hash === '#/wall') return viewTemplate(hash);
-  else return viewTemplate('#/home'); 
+  else return viewTemplate('#/login'); 
 };
 
 export const initRouter = () => {
