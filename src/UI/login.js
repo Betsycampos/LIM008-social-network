@@ -15,7 +15,7 @@ export default () => {
         <p id="warning-pw" class="warning"></p>
       </div>
       <button id="btn-login" type="button" class="btn-registrar">Ingresa</button>
-      <div>Si no tiene una cuenta <a id = "link-register" class = "link-btn">REGISTRATE AQUÍ</a></div>
+      <div class= "color-txt-link">Si no tiene una cuenta <a id = "link-register" class = "link-btn link">REGISTRATE AQUÍ</a></div>
       <div>
         <label>O ingresa a través de:</label>
         <div>
