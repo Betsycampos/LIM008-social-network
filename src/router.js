@@ -2,7 +2,7 @@ import register from './UI/register.js';
 import home from './UI/home.js';
 import login from './UI/login.js';
 import wall from './UI/wall.js';
-import { getPublish } from './firebase-controller.js';
+import { getPublish, securityPost } from './firebase-controller.js';
 export  const viewTemplate = (routers) => {
   const router = routers.substr(2, routers.length - 2);
   const container = document.getElementById('container');
@@ -25,11 +25,23 @@ export  const viewTemplate = (routers) => {
       container.appendChild(wall(post));
     })
     break;
+    case 'friends':
+    securityPost('friends', (post) => {
+      container.innerHTML = '';
+      container.appendChild(wall(post));
+    })
+    break;
+    case 'only-me':
+    securityPost('only-me', (post) => {
+      container.innerHTML = '';
+      container.appendChild(wall(post));
+    })
+    break;
   }
 };
 
 export const changeTemplate = (hash) => {
-  if(hash === '#/register' || hash === '#/login' || hash === '#/wall') return viewTemplate(hash);
+  if(hash === '#/register' || hash === '#/login' || hash === '#/wall' || hash === '#/friends' || hash === '#/only-me') return viewTemplate(hash);
   else return viewTemplate('#/login'); 
 };
 
