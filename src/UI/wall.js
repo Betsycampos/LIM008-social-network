@@ -43,7 +43,12 @@ const itemPublish = (objPublish) => {
   divElement.querySelector(`#btn-like-${objPublish.id}`)
     .addEventListener('click', () => {
       increaseLikes(objPublish.id);
-    });  
+    });
+  if (window.location.hash === '#/friends' || window.location.hash === '#/wall'){
+    divElement.querySelector(`#btn-delete-${objPublish.id}`).setAttribute('class', 'unseen');
+    divElement.querySelector(`#btn`).setAttribute('class', 'unseen');
+  }
+  
   return divElement
 }
 
@@ -77,8 +82,8 @@ export default (post) => {
         <ul>
             <li><a id="btn-only-me">Solo yo</a></li>
             <li><a id="btn-friends">Amigos</a></li>
-            <li><a id="btn-publish">Público</a></li>
-        </ul>
+            <li><a id="btn-wall">Público</a></li>
+         </ul>
         </li>
         <li><a id="btn-logout">Cerrar sesión</a></li>
       </ul>
@@ -112,5 +117,22 @@ export default (post) => {
     divContinerPost.appendChild(itemPublish(data));
   });
   btnPublish.addEventListener('click', addPublishOnSubmit);
+
+  divProfile.querySelector('#btn-only-me')
+    .addEventListener('click', (evt) => {
+      evt.preventDefault();
+      window.location.hash = '#/only-me';
+  });
+  divProfile.querySelector('#btn-friends')
+    .addEventListener('click', (evt) => {
+      evt.preventDefault();
+      window.location.hash = '#/friends';
+  });
+  divProfile.querySelector('#btn-wall')
+    .addEventListener('click', (evt) => {
+      evt.preventDefault();
+      window.location.hash = '#/wall';
+  });
+
   return formElem;
 };
