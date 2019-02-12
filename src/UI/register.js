@@ -21,7 +21,7 @@ export default () => {
       <p id="warning-cf" class="warning"></p>
     </div>
     <button id="btn-register" type="button" class="btn-registrar font-bio link-btn">Regístrate</button>
-    <div>Si ya tiene una cuenta <a id = "link-login" class = "link-btn">INGRESA AQUÍ</a></div>
+    <div class= "color-txt-link">Si ya tiene una cuenta <a id = "link-login" class = "link-btn link">INGRESA AQUÍ</a></div>
     <div>
       <label class="font-bio">O ingresa a través de:</label>
     </div>
