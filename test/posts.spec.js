@@ -21,7 +21,7 @@ const data = {
 
 global.firebase = new MockFirebase(data, { isNaiveSnapshotListenerEnabled: true });  
 
-import { addPublish, deletePublish, getPublish, editPublish } from '../src/firebase-controller.js';
+import { addPublish, deletePublish, getPublish, editPublish, seeLikes, increaseLikes } from '../src/firebase-controller.js';
 
 describe('Muro de posts', () => {
   it('Debería poder agregar un post', (done) => {
@@ -53,5 +53,14 @@ describe('Muro de posts', () => {
           done();
         }
       ))
+  });
+  it('Debería mostrarse el número de likes', () => {
+    return increaseLikes('p002')
+    .then(() => getPublish(
+      (data) => {
+        const result = data.find((post) => post.countLikes === 1);
+        expect(result.post).toBe(1);
+      }
+    ));
   });
 });

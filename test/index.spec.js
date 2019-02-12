@@ -1,11 +1,12 @@
 // importamos la funcion que vamos a testear
-import { emailValidation } from "../src/lib/index";
+import { emailValidation, passwordValidation,
+increaseLikes, seeLikes } from "../src/lib/index";
 
-import { passwordValidation} from "../src/lib/index";
 const emailTrue = 'format_email_true@email.com';
 const emailFalse = 'format_email_true_email_com';
 const passwordTrue = '123456';
 const passwordFalse = '12345';
+
 describe('emailValidation', () => {
   it('debería ser una función', () => {
     expect(typeof emailValidation).toBe('function');
@@ -17,6 +18,7 @@ describe('emailValidation', () => {
     expect(emailValidation(emailTrue)).toEqual(true);
   });
 });
+
 describe('passwordValidation', () => {
   it('debería ser una función', () => {
     expect(typeof passwordValidation).toBe('function');
@@ -28,3 +30,14 @@ describe('passwordValidation', () => {
     expect(passwordValidation(passwordTrue)).toEqual(true)
   });
 });
+
+
+
+// describe('increaseLikes', () => {
+//   it('Debería ser una función', () => {
+//     expect(typeof increaseLikes).toBe('function');
+//   });
+//   it('Debería aumentar el número de likes en 1', () => {
+//     expect(increaseLikes('p001')).toEqual(1);
+//   });
+// });

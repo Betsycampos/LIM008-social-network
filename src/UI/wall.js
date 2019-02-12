@@ -1,5 +1,5 @@
-import { addPublishOnSubmit, deletePublishOnClick, editPublishOnClick } from "../view-controller.js";
-import {securityPost} from "../firebase-controller.js"
+import { addPublishOnSubmit, deletePublishOnClick, editPublishOnClick, logoutOnClick } from "../view-controller.js";
+import {securityPost, increaseLikes } from "../firebase-controller.js"
 
 const itemPublish = (objPublish) => {
   const divElement = document.createElement('div');
@@ -10,6 +10,10 @@ const itemPublish = (objPublish) => {
       <div class="title-post">${objPublish.email}</div>
       <div id="post-${objPublish.id}">
         <div class="container-post">${objPublish.post}</div>
+        <div class="div-likes">
+          <a class="btn-like" id="btn-like-${objPublish.id}"></a>
+          <p class="p-likes">${objPublish.countLikes}</p>
+        </div>
       </div>
     </div>
     <div id="btn">
@@ -21,28 +25,26 @@ const itemPublish = (objPublish) => {
     divElement.querySelector('#btn-edit')
     .addEventListener('click', () => {
       divElement.querySelector(`#post1-${objPublish.id}`).innerHTML = `
-      <form  id ="frm-save">
+      <form id="frm-save">
         <textarea id="text-edit">${objPublish.post}</textarea>;
         <button id="btn-save-${objPublish.id}" type="button" class="btn-wall">Guardar</button>
       </form>`
      
       const btnSave = document.getElementById(`btn-save-${objPublish.id}`);
        btnSave.addEventListener('click', () => editPublishOnClick(objPublish));  
-      //  divElement.querySelector('#post-all')
-      // .addEventListener('click', securityPost);
-    
     });
-    
     
   // Agregando css con fondo de la caja (divElement)
   divElement.setAttribute('class', 'post-background');
-
   // Agregando evento de click al btn eliminar una publicación
   divElement.querySelector(`#btn-delete-${objPublish.id}`)
     .addEventListener('click', () => deletePublishOnClick(objPublish));
-  
-  return divElement;
-    
+  // Agregando evento click al botón like
+  divElement.querySelector(`#btn-like-${objPublish.id}`)
+    .addEventListener('click', () => {
+      increaseLikes(objPublish.id);
+    });  
+  return divElement
 }
 
 export default (post) => {
@@ -50,7 +52,7 @@ export default (post) => {
   const formContent = `
   <div class="container-add-post">
     <textarea id="txt-post" cols="30" rows="10" placeholder="¿Qué quieres publicar?"></textarea>
-    <div class="align-left">
+    <div id= "container-textarea" class="align-left">
       <select id="select-security" class="select-security">
         <option id="me"value="only-me">Solo yo</option>
         <option value="friends">Amigos</option>
@@ -68,9 +70,43 @@ export default (post) => {
   <!-- snakbar -->
   <div id="demo-snackbar">
   </div>`;
-  
+  const divContent = `
+    <ul class="nav">
+    <li>
+      <a class ="menu"><img class="img" src="./img/menu-interface-symbol-of-four-horizontal-lines-with-dots.png" alt=""></a>
+      <ul>
+        <li><a>Publicaciones</a>
+        <ul>
+            <li><a id="btn-only-me">Solo yo</a></li>
+            <li><a id="btn-friends">Amigos</a></li>
+            <li><a id="btn-publish">Público</a></li>
+        </ul>
+        </li>
+        <li><a id="btn-logout">Cerrar sesión</a></li>
+      </ul>
+     </li>
+    </ul>`;
+    const advertising=`
+    <div>
+			<h1>Publicidad 1</h1>
+			<p>Texto descriptivo 1</p>
+  	</div>
+  	<div>
+			<h1>Publicidad 2</h1>
+			<p>Texto descriptivo 2</p>
+    </div>
+    <div>
+    <h1>Publicidad 3</h1>
+    <p>Texto descriptivo 3</p>
+  </div>`;
   formElem.setAttribute('id', 'frm-wall');
   formElem.innerHTML = formContent;
+  const divProfile = document.getElementById('profile');
+  divProfile.innerHTML = divContent;
+  const leftMenu = document.getElementById('advertising');
+  leftMenu.innerHTML = advertising;
+  const btnLogout = divProfile.querySelector('#btn-logout');
+  btnLogout.addEventListener('click', (() =>{logoutOnClick()}));
   const btnPublish = formElem.querySelector('#btn-publish');
   btnPublish.setAttribute('class', 'btn-wall');
   const divContainerPost = formElem.querySelector('#publish-list');
@@ -99,8 +135,4 @@ export default (post) => {
   
   btnPublish.addEventListener('click', addPublishOnSubmit);
   return formElem;
-  
-}
-
-
-
+};
