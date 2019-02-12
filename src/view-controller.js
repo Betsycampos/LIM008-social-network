@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile, authenticationGoogle } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData, createProfile, authenticationGoogle, securityPost } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) =>  {
@@ -92,3 +92,13 @@ export const editPublishOnClick = (objPost) => {
  editPublish(objPost.id, textEditPost.value);
 // .addEventListener('click', editPublishOnClick);
 };
+  
+
+  //  (document.getElementById("solo").addEventListener('click',securityOnClick));
+const securityOnClick = (security) => {
+  console.log('hola')
+console.log(security)
+}
+
+securityPost('friends', securityOnClick);
+ 
