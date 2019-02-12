@@ -1,4 +1,4 @@
-import { createUser, signIn, addPublish, deletePublish, editPublish, userData, confirmUniqueProfile, authenticationGoogle, authenticationFacebook, signOut } from './firebase-controller.js';
+import { createUser, signIn, addPublish, deletePublish, editPublish, userData, confirmUniqueProfile, authenticationGoogle, authenticationFacebook, signOut, securityPost } from './firebase-controller.js';
 import { emailValidation } from './lib/index.js';
 
 const changeHash = (hash) => {

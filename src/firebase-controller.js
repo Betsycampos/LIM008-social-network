@@ -77,7 +77,7 @@ export const signOut = () => {
   return firebase.auth().signOut()
     .catch(() => {})
 };
-
+ 
 // Función para traer todos los documentos de la colección user
 export const getProfile = (callback) =>
   firebase.firestore().collection('user')

@@ -7,9 +7,11 @@ export default () => {
       <h2>INICIA SESIÓN</h2>
       <img alt="image-tree" src="https://i.ibb.co/F0vckNw/img-tree.png" class="img-tree"/>
       <div> 
-        <input id="email" type="text" placeholder="Correo">
+        <i class="fas fa-user"></i>
+        <input id="email" type="text" placeholder="Usuario">
         <p id="warning-em" class="warning"></p>
-        <input id="password" type="password" placeholder="Contraseña">
+        <i class="fas fa-unlock-alt"></i>
+        <input id="password" type="password" class="text_password" placeholder="Contraseña">
         <p id="warning-pw" class="warning"></p>
       </div>
       <button id="btn-login" type="button" class="btn-registrar">Ingresa</button>

@@ -106,6 +106,7 @@ h2 {
 }
 
 .btn-registrar {
+    text-decoration: none;
     background-color: rgb(121, 224, 231, 0.7);
     color: rgb(15, 15, 15);
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -114,6 +115,7 @@ h2 {
     margin: 20px;
     padding: 5px;
 }
+
 
 .post-background {
     background:#fff;
@@ -316,4 +318,8 @@ ul, ol {
 
 .link-btn, .btn-like {
     cursor: pointer;
+}
+
+.unseen { 
+    display: none;
 }
