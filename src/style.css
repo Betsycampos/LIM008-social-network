@@ -314,6 +314,6 @@ ul, ol {
     margin: 5em;
 }
 
-.link-btn {
+.link-btn, .btn-like {
     cursor: pointer;
 }
