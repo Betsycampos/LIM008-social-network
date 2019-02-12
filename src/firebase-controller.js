@@ -9,10 +9,11 @@ export const createProfile = (email, name) =>
     email: email,
     name: name
   })
-export const editProfile = (email, name) => 
-  firebase.firestore().collection('user').doc(email).update({
-    name:  name
-  });
+
+// export const editProfile = (email, name) => 
+//   firebase.firestore().collection('user').doc(email).update({
+//     name:  name
+//   });
 
 export const confirmUniqueProfile = (emailInput, name) =>
   firebase.firestore().collection('user').where('email', '==', emailInput).get()
@@ -20,10 +21,10 @@ export const confirmUniqueProfile = (emailInput, name) =>
       querySnapshot.forEach((doc) => {
         const emailDB = doc.data().email;
         if (emailDB !== emailInput) return createProfile(emailInput, name);
+        else return undefined;
       })
-
     })
-    .catch((error) =>{console.log(error)});
+    .catch(() =>{ });
 
 export const authenticationGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -42,7 +43,6 @@ export const authenticationFacebook = () => {
 export const userData = () => {
   const user = firebase.auth().currentUser
   if (user != null) return user.email;
-  // else alert('para colgar un post debe iniciar sesión');
   else return undefined;
 };
 
@@ -93,10 +93,7 @@ export const increaseLikes = (idPost) => {
   const firebaseCollection = firebase.firestore().collection("posts").doc(idPost);
   return firebaseCollection.get()
     .then((result) => {
-      if (result.exists) {
-        const likes = result.data().countLikes;
-        return likes;
-      }
+      if (result.exists) return result.data().countLikes;      
     })
     .then((result) => {
       firebaseCollection.update({
@@ -104,3 +101,14 @@ export const increaseLikes = (idPost) => {
       })
     })
 };
+
+export const securityPost = (type, callback) =>
+ firebase.firestore().collection('posts')
+ .where('security', '==', type)
+ .onSnapshot((querySnapshot) => {
+  const data = [];
+  querySnapshot.forEach((doc) => {
+    data.push({ id: doc.id, ...doc.data() })
+  });
+  callback(data);
+}); 
