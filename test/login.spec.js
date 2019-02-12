@@ -19,23 +19,30 @@ describe('Inicio de sesión', () => {
         expect(userData()).toBe('test-register@gmail.com')
       });
   });
-  it('Debería poder iniciar sesión con Google', () => {
-    return authenticationGoogle()
-      .then((result) => {
-        // const emailU = result.user.email;
-        // expect(userData()).toBe(emailU)
-        // console.log(result);
-      });
-  });
-  it('Debería poder iniciar sesión con Facebook', () => {
-    return authenticationFacebook()
+});
+
+describe('Autenticación con Google', () => {
+  it('Debería ser una función', () => {
+    expect(typeof authenticationGoogle()).toBe('object');
       // .then((result) => {
       //   // const emailU = result.user.email;
       //   // expect(userData()).toBe(emailU)
-      //   console.log(result);
+      //   // console.log(result);
       // });
   });
 });
+
+describe('Autenticación con Facebook', () => {
+  it('Debería ser una función', () => {
+    expect(typeof authenticationFacebook()).toBe('object');
+      // .then((result) => {
+      //   // const emailU = result.user.email;
+      //   // expect(userData()).toBe(emailU)
+      //   // console.log(result);
+      // });
+  });
+});
+
 
 describe('Cerrar sesión', () => {
   it('Debería cerrar sesión devolviendo undefined', () => {
