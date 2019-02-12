@@ -19,7 +19,7 @@ const data = {
 
 global.firebase = new MockFirebase(data, { isNaiveSnapshotListenerEnabled: true});
 
-import { createProfile, getProfile } from '../src/firebase-controller.js';
+import { createProfile, getProfile, confirmUniqueProfile } from '../src/firebase-controller.js';
 
 describe('User', () => {
   it('Debería crear un usuario', (done) => {
@@ -31,5 +31,11 @@ describe('User', () => {
           done()
         }
       ))
+  });
+  it('Debería confirmar que no se duplique un usuario', () => {
+    return confirmUniqueProfile('claudiamalasquez67@gmail.com','Claudia Malásquez Aquino')
+    .then((result) => {
+      expect(result).toBe(undefined)
+    })
   });
 });
