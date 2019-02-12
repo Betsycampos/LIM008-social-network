@@ -61,9 +61,7 @@ export default (post) => {
       <select id="select-security" class="select-security">
         <option id="me"value="only-me">Solo yo</option>
         <option value="friends">Amigos</option>
-      </select>
-      <button type= "button" id="post-me" class="btn-only">Solo yo</button>
-      <button type= "button" id="post-friends class="btn-friends">Amigos</button>     
+      </select>    
       <button id="btn-publish" type="button" class="btn-wall">Publicar</button>
     </div>
   </div>
@@ -115,25 +113,6 @@ export default (post) => {
   const btnPublish = formElem.querySelector('#btn-publish');
   btnPublish.setAttribute('class', 'btn-wall');
   const divContainerPost = formElem.querySelector('#publish-list');
-  formElem.querySelector('#post-me').addEventListener('click',() => {
- 
-  });
-  
-
-  //return securityOnClick('friends')
-    //.then((result) => {
-    
-      //console.log(result)
-    //  result.forEach(data => {
-    //       divContainerPost.appendChild(itemPublish(data));
-    //    });
-    //})
-    // securityArray.forEach(data => {
-    //   divContainerPost.appendChild(itemPublish(data));
-    // });
-  
-  
-
   post.forEach(data => {
     divContainerPost.appendChild(itemPublish(data));
   });
