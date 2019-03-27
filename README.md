@@ -23,7 +23,7 @@ Para validar la idea de una red social orientada a temas ecológicos se realizó
 
  ![respuesta2](https://i.ibb.co/z280qcX/3.png)
 
- Con las respuestas de las 2 primeras preguntas, podemos ver que la mayoría percibe que el mundo necesita un cambio en sus hábitos con respecto a cómo utilizamos los recursos naturales, ya que si no cambiamos en 10 años el mundo será menos habitable y con menos recursos naturales vitales para sobrevivir.
+ Con las respuestas de las 2 primeras preguntas; podemos ver que la mayoría percibe que el mundo necesita un cambio en sus hábitos con respecto a cómo utilizamos los recursos naturales, ya que si no cambiamos en 10 años el mundo será menos habitable y con menos recursos naturales vitales para sobrevivir.
 
  ![respuesta3](https://i.ibb.co/YWQG23S/4.png)
 
